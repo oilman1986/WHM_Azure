@@ -10,13 +10,13 @@
 		"schema": [
 			{
 				"name": "WellID",
-				"type": "int",
-				"precision": 10
+				"type": "bigint",
+				"precision": 19
 			},
 			{
 				"name": "CompletionID",
-				"type": "int",
-				"precision": 10
+				"type": "bigint",
+				"precision": 19
 			},
 			{
 				"name": "API_UWI",

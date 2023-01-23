@@ -29,8 +29,17 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"writeBehavior": "insert",
-						"sqlWriterUseTableLock": false
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true,
+							"keys": [
+								"WellID",
+								"CompletionID",
+								"ProducingMonth"
+							]
+						},
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
@@ -38,146 +47,38 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "API_UWI",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "API_UWI",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Unformatted_API_UWI",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Unformatted_API_UWI",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "API_UWI_12",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "API_UWI_12",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Unformatted_API_UWI_12",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Unformatted_API_UWI_12",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "API_UWI_14",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "API_UWI_14",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Unformatted_API_UWI_14",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Unformatted_API_UWI_14",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
 									"name": "WellID",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
 									"name": "WellID",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "CompletionID",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "CompletionID",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "WellPadID",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "WellPadID",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "WellPadDirection",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "WellPadDirection",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVWellGrouping",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVWellGrouping",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "CompletionNumber",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "CompletionNumber",
 									"type": "Int32",
 									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "CompletionID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CompletionID",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "API_UWI",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "API_UWI",
+									"type": "String",
+									"physicalType": "nvarchar"
 								}
 							},
 							{
@@ -194,2556 +95,264 @@
 							},
 							{
 								"source": {
-									"name": "Country",
+									"name": "ProducingMonth",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Country",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "StateProvince",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "StateProvince",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "County",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "County",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Lease",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Lease",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "LeaseName",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "LeaseName",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVOperator",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVOperator",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "RawOperator",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "RawOperator",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "InitialOperator",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "InitialOperator",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVTicker",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVTicker",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENV_Peer_Group",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENV_Peer_Group",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENV_Stock_Exchange",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENV_Stock_Exchange",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVWellServiceProvider",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVWellServiceProvider",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVProdWellType",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVProdWellType",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "StateWellType",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "StateWellType",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVWellType",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVWellType",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVProducingMethod",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVProducingMethod",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVRegion",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVRegion",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVBasin",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVBasin",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVPlay",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVPlay",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVSubPlay",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVSubPlay",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVInterval",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVInterval",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVIntervalSource",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVIntervalSource",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVWellStatus",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVWellStatus",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVWellboreStatus",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVWellboreStatus",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "OnConfidential",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "OnConfidential",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "OffConfidentialDate",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "OffConfidentialDate",
+									"name": "ProducingMonth",
 									"type": "DateTime",
 									"physicalType": "date"
 								}
 							},
 							{
 								"source": {
-									"name": "Trajectory",
+									"name": "TotalProdMonths",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Trajectory",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVWellboreType",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVWellboreType",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Formation",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Formation",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "FirstProdDate",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "FirstProdDate",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "Latitude",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Latitude",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "Longitude",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Longitude",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "Latitude_BH",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Latitude_BH",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "Longitude_BH",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Longitude_BH",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "TVD_FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "TVD_FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "MD_FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "MD_FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "District",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "District",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Field",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Field",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Survey",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Survey",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Block",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Block",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Abstract",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Abstract",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Platform",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Platform",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Section",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Section",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Township",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Township",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Range",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Range",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Section_Township_Range",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Section_Township_Range",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Unit_Name",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Unit_Name",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "WellNumber",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "WellNumber",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "SurfaceLatitudeLongitudeSource",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "SurfaceLatitudeLongitudeSource",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "PlugDate",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "PlugDate",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "PlugbackMeasuredDepth_FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "PlugbackMeasuredDepth_FT",
+									"name": "TotalProdMonths",
 									"type": "Int32",
 									"physicalType": "int"
 								}
 							},
 							{
 								"source": {
-									"name": "PlugbackTrueVerticalDepth_FT",
+									"name": "TotalCompletionMonths",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "PlugbackTrueVerticalDepth_FT",
+									"name": "TotalCompletionMonths",
 									"type": "Int32",
 									"physicalType": "int"
 								}
 							},
 							{
 								"source": {
-									"name": "AvgBreakdownPressure_PSI",
+									"name": "ProducingDays",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "AvgBreakdownPressure_PSI",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "AvgClusterSpacingPerStage_FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "AvgClusterSpacingPerStage_FT",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "AvgClusterSpacing_FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "AvgClusterSpacing_FT",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "AvgFracGradient_PSIPerFT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "AvgFracGradient_PSIPerFT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "AvgISIP_PSI",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "AvgISIP_PSI",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "AvgMillTime_Min",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "AvgMillTime_Min",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "AvgPortSleeveOpeningPressure_PSI",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "AvgPortSleeveOpeningPressure_PSI",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "AvgShotsPerCluster",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "AvgShotsPerCluster",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "AvgShotsPerFt",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "AvgShotsPerFt",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "AvgTreatmentPressure_PSI",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "AvgTreatmentPressure_PSI",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "AvgTreatmentRate_BBLPerMin",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "AvgTreatmentRate_BBLPerMin",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "ClustersPer1,000Ft",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ClustersPer1,000Ft",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "ClustersPerStage",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ClustersPerStage",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "ShotsPer1,000Ft",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ShotsPer1,000Ft",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "ShotsPerStage",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ShotsPerStage",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "TotalShots",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "TotalShots",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "AvgFluidPerCluster_BBL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "AvgFluidPerCluster_BBL",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "AvgFluidPerShot_BBL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "AvgFluidPerShot_BBL",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "AvgFluidPerStage_BBL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "AvgFluidPerStage_BBL",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "FracRigOnsiteDate",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "FracRigOnsiteDate",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "FracRigReleaseDate",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "FracRigReleaseDate",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "AvgProppantPerCluster_LBS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "AvgProppantPerCluster_LBS",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "AvgProppantPerShot_LBS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "AvgProppantPerShot_LBS",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "AvgProppantPerStage_LBS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "AvgProppantPerStage_LBS",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "StimulatedStages",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "StimulatedStages",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "TotalClusters",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "TotalClusters",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "Vintage",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Vintage",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "FirstProdQuarter",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "FirstProdQuarter",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "FirstProdMonth",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "FirstProdMonth",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVElevationKB_FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVElevationKB_FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVElevationKBSource",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVElevationKBSource",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVElevationGL_FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVElevationGL_FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVElevationGLSource",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVElevationGLSource",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ElevationKB_FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ElevationKB_FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "ElevationGL_FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ElevationGL_FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "CoordinateSource",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "CoordinateSource",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "PermitApprovedDate",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "PermitApprovedDate",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "PermitSubmittedDate",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "PermitSubmittedDate",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "SpudDate",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "SpudDate",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "DrillingEndDate",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "DrillingEndDate",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "RigReleaseDate",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "RigReleaseDate",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "CompletionDate",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "CompletionDate",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "FirstDay",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "FirstDay",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVCompInsertedDate",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVCompInsertedDate",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "StateFileNumber",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "StateFileNumber",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVFracJobType",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVFracJobType",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVFluidType",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVFluidType",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "CompletionTime_DAYS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "CompletionTime_DAYS",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "CompletionDesign",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "CompletionDesign",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "PermitToSpud_DAYS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "PermitToSpud_DAYS",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "SpudToRigRelease_DAYS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "SpudToRigRelease_DAYS",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "SpudToCompletion_DAYS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "SpudToCompletion_DAYS",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "SpudToSales_DAYS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "SpudToSales_DAYS",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "SoakTime_DAYS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "SoakTime_DAYS",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "NumberOfStrings",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "NumberOfStrings",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "UpperPerf_FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "UpperPerf_FT",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "LowerPerf_FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "LowerPerf_FT",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "PerfInterval_FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "PerfInterval_FT",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "LateralLength_FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "LateralLength_FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "FracStages",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "FracStages",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "AverageStageSpacing_FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "AverageStageSpacing_FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVProppantBrand",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVProppantBrand",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ProppantLoading_LBSPerGAL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ProppantLoading_LBSPerGAL",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "ENVProppantType",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ENVProppantType",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ProppantIntensity_LBSPerFT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ProppantIntensity_LBSPerFT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "Proppant_LBS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Proppant_LBS",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "TotalWaterPumped_GAL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "TotalWaterPumped_GAL",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "WaterIntensity_GALPerFT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "WaterIntensity_GALPerFT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "TotalFluidPumped_BBL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "TotalFluidPumped_BBL",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "FluidIntensity_BBLPerFT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "FluidIntensity_BBLPerFT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "AcidVolume_BBL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "AcidVolume_BBL",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "Bottom_Hole_Temp_DEGF",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Bottom_Hole_Temp_DEGF",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "Biocide_LBS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Biocide_LBS",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "Breaker_LBS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Breaker_LBS",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "Buffer_LBS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Buffer_LBS",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "ClayControl_LBS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ClayControl_LBS",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "CrossLinker_LBS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "CrossLinker_LBS",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "FrictionReducer_LBS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "FrictionReducer_LBS",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "GellingAgent_LBS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "GellingAgent_LBS",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "IronControl_LBS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "IronControl_LBS",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "ScaleInhibitor_LBS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ScaleInhibitor_LBS",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "Surfactant_LBS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Surfactant_LBS",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "Energizer_LBS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Energizer_LBS",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "Diverter_LBS",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Diverter_LBS",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "TestDate",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "TestDate",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "ChokeSize_64IN",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ChokeSize_64IN",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "TestRate_BOEPerDAY",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "TestRate_BOEPerDAY",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "TestRate_BOEPerDAYPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "TestRate_BOEPerDAYPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "TestRate_MCFEPerDAY",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "TestRate_MCFEPerDAY",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "OilTestRate_BBLPerDAY",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "OilTestRate_BBLPerDAY",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "OilTestRate_BBLPerDAYPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "OilTestRate_BBLPerDAYPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "GasTestRate_MCFPerDAY",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "GasTestRate_MCFPerDAY",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "GasTestRate_MCFPerDAYPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "GasTestRate_MCFPerDAYPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "WaterTestRate_BBLPerDAY",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "WaterTestRate_BBLPerDAY",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "WaterTestRate_BBLPerDAYPer1000Ft",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "WaterTestRate_BBLPerDAYPer1000Ft",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "WaterDepth",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "WaterDepth",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "TestWHLiquids_PCT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "TestWHLiquids_PCT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "CasingPressure_PSI",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "CasingPressure_PSI",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "FlowingTubingPressure_PSI",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "FlowingTubingPressure_PSI",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "ShutInPressure_PSI",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ShutInPressure_PSI",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "OilProdPriorTest_BBL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "OilProdPriorTest_BBL",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "OilTestMethodName",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "OilTestMethodName",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "OilGravity_API",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "OilGravity_API",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "GasGravity_SG",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "GasGravity_SG",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First3MonthProd_BOE",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First3MonthProd_BOE",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First3MonthProd_BOEPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First3MonthProd_BOEPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First3MonthGas_MCF",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First3MonthGas_MCF",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First3MonthGas_MCFPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First3MonthGas_MCFPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First3MonthProd_MCFE",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First3MonthProd_MCFE",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First3MonthProd_MCFEPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First3MonthProd_MCFEPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First3MonthOil_BBL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First3MonthOil_BBL",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First3MonthOil_BBLPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First3MonthOil_BBLPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First3MonthWater_BBL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First3MonthWater_BBL",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First6MonthProd_BOE",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First6MonthProd_BOE",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First6MonthProd_BOEPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First6MonthProd_BOEPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First6MonthGas_MCF",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First6MonthGas_MCF",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First6MonthGas_MCFPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First6MonthGas_MCFPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First6MonthProd_MCFE",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First6MonthProd_MCFE",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First6MonthProd_MCFEPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First6MonthProd_MCFEPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First6MonthOil_BBL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First6MonthOil_BBL",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First6MonthOil_BBLPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First6MonthOil_BBLPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First6MonthWater_BBL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First6MonthWater_BBL",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First9MonthProd_BOE",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First9MonthProd_BOE",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First9MonthProd_BOEPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First9MonthProd_BOEPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First9MonthGas_MCF",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First9MonthGas_MCF",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First9MonthGas_MCFPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First9MonthGas_MCFPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First9MonthProd_MCFE",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First9MonthProd_MCFE",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First9MonthProd_MCFEPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First9MonthProd_MCFEPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First9MonthOil_BBL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First9MonthOil_BBL",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First9MonthOil_BBLPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First9MonthOil_BBLPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First9MonthWater_BBL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First9MonthWater_BBL",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First12MonthProd_BOE",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First12MonthProd_BOE",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First12MonthProd_BOEPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First12MonthProd_BOEPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First12MonthGas_MCF",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First12MonthGas_MCF",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First12MonthGas_MCFPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First12MonthGas_MCFPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First12MonthProd_MCFE",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First12MonthProd_MCFE",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First12MonthProd_MCFEPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First12MonthProd_MCFEPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First12MonthOil_BBL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First12MonthOil_BBL",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First12MonthOil_BBLPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First12MonthOil_BBLPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First12MonthWater_BBL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First12MonthWater_BBL",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "First36MonthProd_BOE",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "First36MonthProd_BOE",
+									"name": "ProducingDays",
 									"type": "Double",
 									"physicalType": "float"
 								}
 							},
 							{
 								"source": {
-									"name": "First36MonthProd_BOEPer1000FT",
+									"name": "Prod_BOE",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "First36MonthProd_BOEPer1000FT",
+									"name": "Prod_BOE",
 									"type": "Double",
 									"physicalType": "float"
 								}
 							},
 							{
 								"source": {
-									"name": "First36MonthGas_MCF",
+									"name": "Prod_MCFE",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "First36MonthGas_MCF",
+									"name": "Prod_MCFE",
 									"type": "Double",
 									"physicalType": "float"
 								}
 							},
 							{
 								"source": {
-									"name": "First36MonthGas_MCFPer1000FT",
+									"name": "LiquidsProd_BBL",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "First36MonthGas_MCFPer1000FT",
+									"name": "LiquidsProd_BBL",
 									"type": "Double",
 									"physicalType": "float"
 								}
 							},
 							{
 								"source": {
-									"name": "First36MonthProd_MCFE",
+									"name": "GasProd_MCF",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "First36MonthProd_MCFE",
+									"name": "GasProd_MCF",
 									"type": "Double",
 									"physicalType": "float"
 								}
 							},
 							{
 								"source": {
-									"name": "First36MonthProd_MCFEPer1000FT",
+									"name": "WaterProd_BBL",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "First36MonthProd_MCFEPer1000FT",
+									"name": "WaterProd_BBL",
 									"type": "Double",
 									"physicalType": "float"
 								}
 							},
 							{
 								"source": {
-									"name": "First36MonthOil_BBL",
+									"name": "RepGasProd_MCF",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "First36MonthOil_BBL",
+									"name": "RepGasProd_MCF",
 									"type": "Double",
 									"physicalType": "float"
 								}
 							},
 							{
 								"source": {
-									"name": "First36MonthOil_BBLPer1000FT",
+									"name": "CDProd_BOEPerDAY",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "First36MonthOil_BBLPer1000FT",
+									"name": "CDProd_BOEPerDAY",
 									"type": "Double",
 									"physicalType": "float"
 								}
 							},
 							{
 								"source": {
-									"name": "First36MonthWater_BBL",
+									"name": "CDProd_MCFEPerDAY",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "First36MonthWater_BBL",
+									"name": "CDProd_MCFEPerDAY",
 									"type": "Double",
 									"physicalType": "float"
 								}
 							},
 							{
 								"source": {
-									"name": "First36MonthWaterProductionBBLPer1000Ft",
+									"name": "CDLiquids_BBLPerDAY",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "First36MonthWaterProductionBBLPer1000Ft",
+									"name": "CDLiquids_BBLPerDAY",
 									"type": "Double",
 									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "PeakProductionDate",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "PeakProductionDate",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "MonthsToPeakProduction",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "MonthsToPeakProduction",
-									"type": "Int32",
-									"physicalType": "int"
 								}
 							},
 							{
 								"source": {
-									"name": "PeakProd_BOE",
+									"name": "CDGas_MCFPerDAY",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "PeakProd_BOE",
+									"name": "CDGas_MCFPerDAY",
 									"type": "Double",
 									"physicalType": "float"
 								}
 							},
 							{
 								"source": {
-									"name": "PeakProd_BOEPer1000FT",
+									"name": "CDWater_BBLPerDAY",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "PeakProd_BOEPer1000FT",
+									"name": "CDWater_BBLPerDAY",
 									"type": "Double",
 									"physicalType": "float"
 								}
 							},
 							{
 								"source": {
-									"name": "PeakGas_MCF",
+									"name": "CDRepGas_MCFPerDAY",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "PeakGas_MCF",
+									"name": "CDRepGas_MCFPerDAY",
 									"type": "Double",
 									"physicalType": "float"
 								}
 							},
 							{
 								"source": {
-									"name": "PeakGas_MCFPer1000FT",
+									"name": "PDProd_BOEPerDAY",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "PeakGas_MCFPer1000FT",
+									"name": "PDProd_BOEPerDAY",
 									"type": "Double",
 									"physicalType": "float"
 								}
 							},
 							{
 								"source": {
-									"name": "PeakProd_MCFE",
+									"name": "PDProd_MCFEPerDAY",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "PeakProd_MCFE",
+									"name": "PDProd_MCFEPerDAY",
 									"type": "Double",
 									"physicalType": "float"
 								}
 							},
 							{
 								"source": {
-									"name": "PeakProd_MCFEPer1000FT",
+									"name": "PDLiquids_BBLPerDAY",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "PeakProd_MCFEPer1000FT",
+									"name": "PDLiquids_BBLPerDAY",
 									"type": "Double",
 									"physicalType": "float"
 								}
 							},
 							{
 								"source": {
-									"name": "PeakOil_BBL",
+									"name": "PDGas_MCFPerDAY",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "PeakOil_BBL",
+									"name": "PDGas_MCFPerDAY",
 									"type": "Double",
 									"physicalType": "float"
 								}
 							},
 							{
 								"source": {
-									"name": "PeakOil_BBLPer1000FT",
+									"name": "PDWater_BBLPerDAY",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "PeakOil_BBLPer1000FT",
+									"name": "PDWater_BBLPerDAY",
 									"type": "Double",
 									"physicalType": "float"
 								}
 							},
 							{
 								"source": {
-									"name": "PeakWater_BBL",
+									"name": "PDRepGas_MCFPerDAY",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "PeakWater_BBL",
+									"name": "PDRepGas_MCFPerDAY",
 									"type": "Double",
 									"physicalType": "float"
 								}
@@ -2762,12 +371,24 @@
 							},
 							{
 								"source": {
-									"name": "CumProd_BOEPer1000FT",
+									"name": "CumProd_MCFE",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "CumProd_BOEPer1000FT",
+									"name": "CumProd_MCFE",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "CumLiquids_BBL",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CumLiquids_BBL",
 									"type": "Double",
 									"physicalType": "float"
 								}
@@ -2786,66 +407,6 @@
 							},
 							{
 								"source": {
-									"name": "CumGas_MCFPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "CumGas_MCFPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "CumProd_MCFE",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "CumProd_MCFE",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "CumProd_MCFEPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "CumProd_MCFEPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "CumOil_BBL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "CumOil_BBL",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "CumOil_BBLPer1000FT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "CumOil_BBLPer1000FT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
 									"name": "CumWater_BBL",
 									"type": "String",
 									"physicalType": "String"
@@ -2858,192 +419,168 @@
 							},
 							{
 								"source": {
-									"name": "TotalProducingMonths",
+									"name": "CumRepGas_MCF",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "TotalProducingMonths",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "LastProducingMonth",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "LastProducingMonth",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "LastMonthLiquidsProduction_BBL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "LastMonthLiquidsProduction_BBL",
+									"name": "CumRepGas_MCF",
 									"type": "Double",
 									"physicalType": "float"
 								}
 							},
 							{
 								"source": {
-									"name": "LastMonthGasProduction_MCF",
+									"name": "ProductionReportedMethod",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "LastMonthGasProduction_MCF",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "LastMonthWaterProduction_BBL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "LastMonthWaterProduction_BBL",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "Last12MonthBOEProduction",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Last12MonthBOEProduction",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "Last12MonthGasProduction_MCF",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Last12MonthGasProduction_MCF",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "Last12MonthOilProduction_BBL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Last12MonthOilProduction_BBL",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "Last12MonthWaterProduction_BBL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Last12MonthWaterProduction_BBL",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "WHLiquids_PCT",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "WHLiquids_PCT",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "GOR_ScfPerBbl",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "GOR_ScfPerBbl",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "CumulativeSOR",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "CumulativeSOR",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "Last3MonthISOR",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Last3MonthISOR",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "SpudDateSource",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "SpudDateSource",
+									"name": "ProductionReportedMethod",
 									"type": "String",
 									"physicalType": "nvarchar"
 								}
 							},
 							{
 								"source": {
-									"name": "TestRate_MCFEPerDAYPer1000FT",
+									"name": "ProducingOperator",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "TestRate_MCFEPerDAYPer1000FT",
+									"name": "ProducingOperator",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "InjectionGas_MCF",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "InjectionGas_MCF",
 									"type": "Double",
 									"physicalType": "float"
 								}
 							},
 							{
 								"source": {
-									"name": "FirstProdYear",
+									"name": "InjectionSolvent_BBL",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "FirstProdYear",
+									"name": "InjectionSolvent_BBL",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "InjectionSteam_BBL",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "InjectionSteam_BBL",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "InjectionWater_BBL",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "InjectionWater_BBL",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "InjectionOther_BBL",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "InjectionOther_BBL",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "CalendarDayInjectionWater_BBLPerDAY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CalendarDayInjectionWater_BBLPerDAY",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "CalendarDayInjectionSteam_BBLPerDAY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CalendarDayInjectionSteam_BBLPerDAY",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "CalendarDayInjectionSolvent_BBLPerDAY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CalendarDayInjectionSolvent_BBLPerDAY",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "CalendarDayInjectionGas_MCFPerDAY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CalendarDayInjectionGas_MCFPerDAY",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "CalendarDayInjectionOther_BBLPerDAY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CalendarDayInjectionOther_BBLPerDAY",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "ENVProdID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ENVProdID",
 									"type": "String",
 									"physicalType": "nvarchar"
 								}

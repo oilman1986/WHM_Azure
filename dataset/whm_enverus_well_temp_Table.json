@@ -1,0 +1,1190 @@
+{
+	"name": "whm_enverus_well_temp_Table",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OutputSQL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "API_UWI",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Unformatted_API_UWI",
+				"type": "nvarchar"
+			},
+			{
+				"name": "API_UWI_12",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Unformatted_API_UWI_12",
+				"type": "nvarchar"
+			},
+			{
+				"name": "API_UWI_14",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Unformatted_API_UWI_14",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WellID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "CompletionID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "WellPadID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WellPadDirection",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENVWellGrouping",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CompletionNumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "WellName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Country",
+				"type": "nvarchar"
+			},
+			{
+				"name": "StateProvince",
+				"type": "nvarchar"
+			},
+			{
+				"name": "County",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Lease",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LeaseName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENVOperator",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RawOperator",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InitialOperator",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENVTicker",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENV_Peer_Group",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENV_Stock_Exchange",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENVWellServiceProvider",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENVProdWellType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "StateWellType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENVWellType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENVProducingMethod",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENVRegion",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENVBasin",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENVPlay",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENVSubPlay",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENVInterval",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENVIntervalSource",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENVWellStatus",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENVWellboreStatus",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OnConfidential",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OffConfidentialDate",
+				"type": "date"
+			},
+			{
+				"name": "Trajectory",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENVWellboreType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Formation",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FirstProdDate",
+				"type": "date"
+			},
+			{
+				"name": "Latitude",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Longitude",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Latitude_BH",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Longitude_BH",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TVD_FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "MD_FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "District",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Field",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Survey",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Block",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Abstract",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Platform",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Section",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Township",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Range",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Section_Township_Range",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Unit_Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WellNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SurfaceLatitudeLongitudeSource",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PlugDate",
+				"type": "date"
+			},
+			{
+				"name": "PlugbackMeasuredDepth_FT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PlugbackTrueVerticalDepth_FT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AvgBreakdownPressure_PSI",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AvgClusterSpacingPerStage_FT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AvgClusterSpacing_FT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AvgFracGradient_PSIPerFT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "AvgISIP_PSI",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AvgMillTime_Min",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AvgPortSleeveOpeningPressure_PSI",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AvgShotsPerCluster",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AvgShotsPerFt",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AvgTreatmentPressure_PSI",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AvgTreatmentRate_BBLPerMin",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ClustersPer1,000Ft",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ClustersPerStage",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ShotsPer1,000Ft",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ShotsPerStage",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TotalShots",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AvgFluidPerCluster_BBL",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AvgFluidPerShot_BBL",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AvgFluidPerStage_BBL",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FracRigOnsiteDate",
+				"type": "date"
+			},
+			{
+				"name": "FracRigReleaseDate",
+				"type": "date"
+			},
+			{
+				"name": "AvgProppantPerCluster_LBS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AvgProppantPerShot_LBS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AvgProppantPerStage_LBS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "StimulatedStages",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TotalClusters",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Vintage",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FirstProdQuarter",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FirstProdMonth",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENVElevationKB_FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ENVElevationKBSource",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENVElevationGL_FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ENVElevationGLSource",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ElevationKB_FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ElevationGL_FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CoordinateSource",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PermitApprovedDate",
+				"type": "date"
+			},
+			{
+				"name": "PermitSubmittedDate",
+				"type": "date"
+			},
+			{
+				"name": "SpudDate",
+				"type": "date"
+			},
+			{
+				"name": "DrillingEndDate",
+				"type": "date"
+			},
+			{
+				"name": "RigReleaseDate",
+				"type": "date"
+			},
+			{
+				"name": "CompletionDate",
+				"type": "date"
+			},
+			{
+				"name": "FirstDay",
+				"type": "date"
+			},
+			{
+				"name": "ENVCompInsertedDate",
+				"type": "date"
+			},
+			{
+				"name": "StateFileNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENVFracJobType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENVFluidType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CompletionTime_DAYS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CompletionDesign",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PermitToSpud_DAYS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SpudToRigRelease_DAYS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SpudToCompletion_DAYS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SpudToSales_DAYS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SoakTime_DAYS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "NumberOfStrings",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "UpperPerf_FT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "LowerPerf_FT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PerfInterval_FT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "LateralLength_FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "FracStages",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AverageStageSpacing_FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ENVProppantBrand",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProppantLoading_LBSPerGAL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ENVProppantType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProppantIntensity_LBSPerFT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Proppant_LBS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TotalWaterPumped_GAL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "WaterIntensity_GALPerFT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TotalFluidPumped_BBL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "FluidIntensity_BBLPerFT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "AcidVolume_BBL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Bottom_Hole_Temp_DEGF",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Biocide_LBS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Breaker_LBS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Buffer_LBS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ClayControl_LBS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CrossLinker_LBS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "FrictionReducer_LBS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GellingAgent_LBS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "IronControl_LBS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ScaleInhibitor_LBS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Surfactant_LBS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Energizer_LBS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Diverter_LBS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TestDate",
+				"type": "date"
+			},
+			{
+				"name": "ChokeSize_64IN",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TestRate_BOEPerDAY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TestRate_BOEPerDAYPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TestRate_MCFEPerDAY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "OilTestRate_BBLPerDAY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "OilTestRate_BBLPerDAYPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GasTestRate_MCFPerDAY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GasTestRate_MCFPerDAYPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "WaterTestRate_BBLPerDAY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "WaterTestRate_BBLPerDAYPer1000Ft",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "WaterDepth",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TestWHLiquids_PCT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CasingPressure_PSI",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "FlowingTubingPressure_PSI",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ShutInPressure_PSI",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "OilProdPriorTest_BBL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "OilTestMethodName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OilGravity_API",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GasGravity_SG",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First3MonthProd_BOE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First3MonthProd_BOEPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First3MonthGas_MCF",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First3MonthGas_MCFPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First3MonthProd_MCFE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First3MonthProd_MCFEPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First3MonthOil_BBL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First3MonthOil_BBLPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First3MonthWater_BBL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First6MonthProd_BOE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First6MonthProd_BOEPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First6MonthGas_MCF",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First6MonthGas_MCFPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First6MonthProd_MCFE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First6MonthProd_MCFEPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First6MonthOil_BBL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First6MonthOil_BBLPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First6MonthWater_BBL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First9MonthProd_BOE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First9MonthProd_BOEPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First9MonthGas_MCF",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First9MonthGas_MCFPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First9MonthProd_MCFE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First9MonthProd_MCFEPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First9MonthOil_BBL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First9MonthOil_BBLPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First9MonthWater_BBL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First12MonthProd_BOE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First12MonthProd_BOEPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First12MonthGas_MCF",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First12MonthGas_MCFPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First12MonthProd_MCFE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First12MonthProd_MCFEPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First12MonthOil_BBL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First12MonthOil_BBLPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First12MonthWater_BBL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First36MonthProd_BOE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First36MonthProd_BOEPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First36MonthGas_MCF",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First36MonthGas_MCFPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First36MonthProd_MCFE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First36MonthProd_MCFEPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First36MonthOil_BBL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First36MonthOil_BBLPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First36MonthWater_BBL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "First36MonthWaterProductionBBLPer1000Ft",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PeakProductionDate",
+				"type": "date"
+			},
+			{
+				"name": "MonthsToPeakProduction",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PeakProd_BOE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PeakProd_BOEPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PeakGas_MCF",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PeakGas_MCFPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PeakProd_MCFE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PeakProd_MCFEPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PeakOil_BBL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PeakOil_BBLPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PeakWater_BBL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CumProd_BOE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CumProd_BOEPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CumGas_MCF",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CumGas_MCFPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CumProd_MCFE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CumProd_MCFEPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CumOil_BBL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CumOil_BBLPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CumWater_BBL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TotalProducingMonths",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "LastProducingMonth",
+				"type": "date"
+			},
+			{
+				"name": "LastMonthLiquidsProduction_BBL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "LastMonthGasProduction_MCF",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "LastMonthWaterProduction_BBL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Last12MonthBOEProduction",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Last12MonthGasProduction_MCF",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Last12MonthOilProduction_BBL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Last12MonthWaterProduction_BBL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "WHLiquids_PCT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GOR_ScfPerBbl",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CumulativeSOR",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Last3MonthISOR",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SpudDateSource",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TestRate_MCFEPerDAYPer1000FT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "FirstProdYear",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "enverus",
+			"table": "Well_Temp"
+		}
+	}
+}

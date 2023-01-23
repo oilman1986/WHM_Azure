@@ -53,8 +53,8 @@
 								},
 								"sink": {
 									"name": "WellID",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int64",
+									"physicalType": "bigint"
 								}
 							},
 							{
@@ -65,8 +65,8 @@
 								},
 								"sink": {
 									"name": "CompletionID",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int64",
+									"physicalType": "bigint"
 								}
 							},
 							{

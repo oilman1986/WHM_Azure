@@ -2311,8 +2311,7 @@
 								"upsertSettings": {
 									"useTempDB": true,
 									"keys": [
-										"WellID",
-										"CompletionNumber"
+										"Unformatted_API_UWI_14"
 									]
 								},
 								"sqlWriterUseTableLock": false,

@@ -1,0 +1,12 @@
+{
+	"name": "OutputSQL",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=whm.database.windows.net;initial catalog=WHM;user id=whm_admin",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEJCMjkzODJFLTU3RTctNDg1RC1CRjZGLTAzMjNFMTEwQUUwOV8xNzE2OGE4ZC1jZDgwLTRmNTEtYmIxNC1mYzI0ZDljNjRkMDEiDQp9"
+		}
+	}
+}

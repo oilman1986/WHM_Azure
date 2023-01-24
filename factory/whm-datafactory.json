@@ -1,0 +1,9 @@
+{
+	"name": "whm-datafactory",
+	"properties": {
+		"globalConfigurations": {
+			"PipelineBillingEnabled": "true"
+		}
+	},
+	"location": "centralus"
+}

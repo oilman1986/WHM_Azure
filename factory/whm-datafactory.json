@@ -2,7 +2,7 @@
 	"name": "whm-datafactory",
 	"properties": {
 		"globalConfigurations": {
-			"PipelineBillingEnabled": "true"
+			"PipelineBillingEnabled": "false"
 		}
 	},
 	"location": "centralus"

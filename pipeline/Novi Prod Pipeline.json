@@ -1,0 +1,233 @@
+{
+	"name": "Novi Prod Pipeline",
+	"properties": {
+		"description": "moves novi prod csvs to sql",
+		"activities": [
+			{
+				"name": "Novi Prod CSV to SQL",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"additionalColumns": [
+							{
+								"name": "FileName",
+								"value": "$$FILEPATH"
+							}
+						],
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false,
+							"prefix": "novi_production"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true,
+							"keys": [
+								"API",
+								"Date"
+							]
+						},
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Row",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Row",
+									"type": "Int16",
+									"physicalType": "smallint"
+								}
+							},
+							{
+								"source": {
+									"name": "API",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "API",
+									"type": "Int64",
+									"physicalType": "bigint"
+								}
+							},
+							{
+								"source": {
+									"name": "Well Name",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Well Name",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Date",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Date",
+									"type": "DateTime",
+									"physicalType": "date"
+								}
+							},
+							{
+								"source": {
+									"name": "Months on Production",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Months on Production",
+									"type": "Int16",
+									"physicalType": "smallint"
+								}
+							},
+							{
+								"source": {
+									"name": "IsForecast",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "IsForecast",
+									"type": "Boolean",
+									"physicalType": "bit"
+								}
+							},
+							{
+								"source": {
+									"name": "Oil per day",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Oil per day",
+									"type": "Single",
+									"physicalType": "real"
+								}
+							},
+							{
+								"source": {
+									"name": "Gas per day",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Gas per day",
+									"type": "Single",
+									"physicalType": "real"
+								}
+							},
+							{
+								"source": {
+									"name": "Oil per month",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Oil per month",
+									"type": "Single",
+									"physicalType": "real"
+								}
+							},
+							{
+								"source": {
+									"name": "Gas per month",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Gas per month",
+									"type": "Single",
+									"physicalType": "real"
+								}
+							},
+							{
+								"source": {
+									"name": "Cumulative Oil",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Cumulative Oil",
+									"type": "Single",
+									"physicalType": "real"
+								}
+							},
+							{
+								"source": {
+									"name": "Cumulative Gas",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Cumulative Gas",
+									"type": "Single",
+									"physicalType": "real"
+								}
+							},
+							{
+								"source": {
+									"name": "FileName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FileName",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Novi_Prod_CSV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "whm_novi_prod_temp_table",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}

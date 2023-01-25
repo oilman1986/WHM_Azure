@@ -27,6 +27,7 @@
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
+							"wildcardFileName": "novi_production*.csv",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {

@@ -37,6 +37,7 @@
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
 							"modifiedDatetimeStart": "2023-01-25T00:00:00.000Z",
+							"modifiedDatetimeEnd": "2023-01-25T00:00:00.000Z",
 							"enablePartitionDiscovery": false,
 							"prefix": "novi_production"
 						},

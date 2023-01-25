@@ -23,95 +23,47 @@
 				"type": "nvarchar"
 			},
 			{
-				"name": "Current Operator",
-				"type": "nvarchar"
+				"name": "Date",
+				"type": "date"
 			},
 			{
-				"name": "Original Operator",
-				"type": "nvarchar"
-			},
-			{
-				"name": "Basin",
-				"type": "nvarchar"
-			},
-			{
-				"name": "Subbasin",
-				"type": "nvarchar"
-			},
-			{
-				"name": "State",
-				"type": "nvarchar"
-			},
-			{
-				"name": "County",
-				"type": "nvarchar"
-			},
-			{
-				"name": "Formation",
-				"type": "nvarchar"
-			},
-			{
-				"name": "Field",
-				"type": "nvarchar"
-			},
-			{
-				"name": "Well type",
-				"type": "nvarchar"
-			},
-			{
-				"name": "Lateral Length",
+				"name": "Months on Production",
 				"type": "smallint",
 				"precision": 5
 			},
 			{
-				"name": "First Completion Proppant Mass",
-				"type": "int",
-				"precision": 10
+				"name": "IsForecast",
+				"type": "bit"
 			},
 			{
-				"name": "Frac jobs",
-				"type": "smallint",
-				"precision": 5
-			},
-			{
-				"name": "Spud Date",
-				"type": "date"
-			},
-			{
-				"name": "Drilling Completion Date",
-				"type": "date"
-			},
-			{
-				"name": "First Production Date",
-				"type": "date"
-			},
-			{
-				"name": "Plugged Date",
-				"type": "date"
-			},
-			{
-				"name": "TVD",
-				"type": "smallint",
-				"precision": 5
-			},
-			{
-				"name": "MD",
-				"type": "smallint",
-				"precision": 5
-			},
-			{
-				"name": "Well Latitude",
+				"name": "Oil per day",
 				"type": "real",
 				"precision": 7
 			},
 			{
-				"name": "Well Longitude",
+				"name": "Gas per day",
 				"type": "real",
 				"precision": 7
 			},
 			{
-				"name": "Column 23",
-				"type": "nvarchar"
+				"name": "Oil per month",
+				"type": "real",
+				"precision": 7
+			},
+			{
+				"name": "Gas per month",
+				"type": "real",
+				"precision": 7
+			},
+			{
+				"name": "Cumulative Oil",
+				"type": "real",
+				"precision": 7
+			},
+			{
+				"name": "Cumulative Gas",
+				"type": "real",
+				"precision": 7
 			}
 		],
 		"typeProperties": {

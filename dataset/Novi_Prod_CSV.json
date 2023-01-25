@@ -14,6 +14,7 @@
 			},
 			"columnDelimiter": "\t",
 			"rowDelimiter": "\n",
+			"encodingName": "UTF-8 without BOM",
 			"escapeChar": "\"",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""

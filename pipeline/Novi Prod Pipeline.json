@@ -188,17 +188,6 @@
 									"type": "Single",
 									"physicalType": "real"
 								}
-							},
-							{
-								"source": {
-									"name": "FileName",
-									"type": "String"
-								},
-								"sink": {
-									"name": "FileName",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
 							}
 						],
 						"typeConversion": true,

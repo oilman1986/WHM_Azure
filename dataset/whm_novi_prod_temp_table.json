@@ -64,10 +64,6 @@
 				"name": "Cumulative Gas",
 				"type": "real",
 				"precision": 7
-			},
-			{
-				"name": "FileName",
-				"type": "nvarchar"
 			}
 		],
 		"typeProperties": {

@@ -18,11 +18,18 @@
 				"typeProperties": {
 					"source": {
 						"type": "DelimitedTextSource",
+						"additionalColumns": [
+							{
+								"name": "FileName",
+								"value": "$$FILEPATH"
+							}
+						],
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
-							"wildcardFileName": "novi_production*.csv",
-							"enablePartitionDiscovery": false
+							"modifiedDatetimeStart": "2023-01-25T00:00:00.000Z",
+							"enablePartitionDiscovery": false,
+							"prefix": "novi_production"
 						},
 						"formatSettings": {
 							"type": "DelimitedTextReadSettings"
@@ -187,6 +194,17 @@
 									"name": "Cumulative Gas",
 									"type": "Single",
 									"physicalType": "real"
+								}
+							},
+							{
+								"source": {
+									"name": "FileName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FileName",
+									"type": "String",
+									"physicalType": "nvarchar"
 								}
 							}
 						],

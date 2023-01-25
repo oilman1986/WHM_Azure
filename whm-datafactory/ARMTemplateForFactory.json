@@ -21,6 +21,630 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/Enverus Production Pipeline')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Enverus csv --> SQL",
+				"activities": [
+					{
+						"name": "Enverus Production CSV to SQL",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"writeBehavior": "upsert",
+								"upsertSettings": {
+									"useTempDB": true,
+									"keys": [
+										"WellID",
+										"CompletionID",
+										"ProducingMonth"
+									]
+								},
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "WellID",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "WellID",
+											"type": "Int64",
+											"physicalType": "bigint"
+										}
+									},
+									{
+										"source": {
+											"name": "CompletionID",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CompletionID",
+											"type": "Int64",
+											"physicalType": "bigint"
+										}
+									},
+									{
+										"source": {
+											"name": "API_UWI",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "API_UWI",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "WellName",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "WellName",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "ProducingMonth",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "ProducingMonth",
+											"type": "DateTime",
+											"physicalType": "date"
+										}
+									},
+									{
+										"source": {
+											"name": "TotalProdMonths",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "TotalProdMonths",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "TotalCompletionMonths",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "TotalCompletionMonths",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "ProducingDays",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "ProducingDays",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "Prod_BOE",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Prod_BOE",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "Prod_MCFE",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Prod_MCFE",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "LiquidsProd_BBL",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "LiquidsProd_BBL",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "GasProd_MCF",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "GasProd_MCF",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "WaterProd_BBL",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "WaterProd_BBL",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "RepGasProd_MCF",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "RepGasProd_MCF",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "CDProd_BOEPerDAY",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CDProd_BOEPerDAY",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "CDProd_MCFEPerDAY",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CDProd_MCFEPerDAY",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "CDLiquids_BBLPerDAY",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CDLiquids_BBLPerDAY",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "CDGas_MCFPerDAY",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CDGas_MCFPerDAY",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "CDWater_BBLPerDAY",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CDWater_BBLPerDAY",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "CDRepGas_MCFPerDAY",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CDRepGas_MCFPerDAY",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "PDProd_BOEPerDAY",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "PDProd_BOEPerDAY",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "PDProd_MCFEPerDAY",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "PDProd_MCFEPerDAY",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "PDLiquids_BBLPerDAY",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "PDLiquids_BBLPerDAY",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "PDGas_MCFPerDAY",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "PDGas_MCFPerDAY",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "PDWater_BBLPerDAY",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "PDWater_BBLPerDAY",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "PDRepGas_MCFPerDAY",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "PDRepGas_MCFPerDAY",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "CumProd_BOE",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CumProd_BOE",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "CumProd_MCFE",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CumProd_MCFE",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "CumLiquids_BBL",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CumLiquids_BBL",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "CumGas_MCF",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CumGas_MCF",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "CumWater_BBL",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CumWater_BBL",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "CumRepGas_MCF",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CumRepGas_MCF",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "ProductionReportedMethod",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "ProductionReportedMethod",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "ProducingOperator",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "ProducingOperator",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "InjectionGas_MCF",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "InjectionGas_MCF",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "InjectionSolvent_BBL",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "InjectionSolvent_BBL",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "InjectionSteam_BBL",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "InjectionSteam_BBL",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "InjectionWater_BBL",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "InjectionWater_BBL",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "InjectionOther_BBL",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "InjectionOther_BBL",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "CalendarDayInjectionWater_BBLPerDAY",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CalendarDayInjectionWater_BBLPerDAY",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "CalendarDayInjectionSteam_BBLPerDAY",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CalendarDayInjectionSteam_BBLPerDAY",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "CalendarDayInjectionSolvent_BBLPerDAY",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CalendarDayInjectionSolvent_BBLPerDAY",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "CalendarDayInjectionGas_MCFPerDAY",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CalendarDayInjectionGas_MCFPerDAY",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "CalendarDayInjectionOther_BBLPerDAY",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CalendarDayInjectionOther_BBLPerDAY",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "ENVProdID",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "ENVProdID",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "Enverus_Production_CSV",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "whm_enverus_production_temp_Table",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/Enverus_Production_CSV')]",
+				"[concat(variables('factoryId'), '/datasets/whm_enverus_production_temp_Table')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Enverus WellHeader Pipeline')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -3115,17 +3739,213 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/InputBlob')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"name": "[concat(parameters('factoryName'), '/Enverus_Production_CSV')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"linkedServiceName": {
+					"referenceName": "InputBlob",
+					"type": "LinkedServiceReference"
+				},
 				"annotations": [],
-				"type": "AzureBlobStorage",
+				"type": "DelimitedText",
 				"typeProperties": {
-					"connectionString": "[parameters('InputBlob_connectionString')]"
-				}
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "Production_Env_MurphyWalter_AOI.csv",
+						"container": "enverus-input"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "WellID",
+						"type": "String"
+					},
+					{
+						"name": "CompletionID",
+						"type": "String"
+					},
+					{
+						"name": "API_UWI",
+						"type": "String"
+					},
+					{
+						"name": "WellName",
+						"type": "String"
+					},
+					{
+						"name": "ProducingMonth",
+						"type": "String"
+					},
+					{
+						"name": "TotalProdMonths",
+						"type": "String"
+					},
+					{
+						"name": "TotalCompletionMonths",
+						"type": "String"
+					},
+					{
+						"name": "ProducingDays",
+						"type": "String"
+					},
+					{
+						"name": "Prod_BOE",
+						"type": "String"
+					},
+					{
+						"name": "Prod_MCFE",
+						"type": "String"
+					},
+					{
+						"name": "LiquidsProd_BBL",
+						"type": "String"
+					},
+					{
+						"name": "GasProd_MCF",
+						"type": "String"
+					},
+					{
+						"name": "WaterProd_BBL",
+						"type": "String"
+					},
+					{
+						"name": "RepGasProd_MCF",
+						"type": "String"
+					},
+					{
+						"name": "CDProd_BOEPerDAY",
+						"type": "String"
+					},
+					{
+						"name": "CDProd_MCFEPerDAY",
+						"type": "String"
+					},
+					{
+						"name": "CDLiquids_BBLPerDAY",
+						"type": "String"
+					},
+					{
+						"name": "CDGas_MCFPerDAY",
+						"type": "String"
+					},
+					{
+						"name": "CDWater_BBLPerDAY",
+						"type": "String"
+					},
+					{
+						"name": "CDRepGas_MCFPerDAY",
+						"type": "String"
+					},
+					{
+						"name": "PDProd_BOEPerDAY",
+						"type": "String"
+					},
+					{
+						"name": "PDProd_MCFEPerDAY",
+						"type": "String"
+					},
+					{
+						"name": "PDLiquids_BBLPerDAY",
+						"type": "String"
+					},
+					{
+						"name": "PDGas_MCFPerDAY",
+						"type": "String"
+					},
+					{
+						"name": "PDWater_BBLPerDAY",
+						"type": "String"
+					},
+					{
+						"name": "PDRepGas_MCFPerDAY",
+						"type": "String"
+					},
+					{
+						"name": "CumProd_BOE",
+						"type": "String"
+					},
+					{
+						"name": "CumProd_MCFE",
+						"type": "String"
+					},
+					{
+						"name": "CumLiquids_BBL",
+						"type": "String"
+					},
+					{
+						"name": "CumGas_MCF",
+						"type": "String"
+					},
+					{
+						"name": "CumWater_BBL",
+						"type": "String"
+					},
+					{
+						"name": "CumRepGas_MCF",
+						"type": "String"
+					},
+					{
+						"name": "ProductionReportedMethod",
+						"type": "String"
+					},
+					{
+						"name": "ProducingOperator",
+						"type": "String"
+					},
+					{
+						"name": "InjectionGas_MCF",
+						"type": "String"
+					},
+					{
+						"name": "InjectionSolvent_BBL",
+						"type": "String"
+					},
+					{
+						"name": "InjectionSteam_BBL",
+						"type": "String"
+					},
+					{
+						"name": "InjectionWater_BBL",
+						"type": "String"
+					},
+					{
+						"name": "InjectionOther_BBL",
+						"type": "String"
+					},
+					{
+						"name": "CalendarDayInjectionWater_BBLPerDAY",
+						"type": "String"
+					},
+					{
+						"name": "CalendarDayInjectionSteam_BBLPerDAY",
+						"type": "String"
+					},
+					{
+						"name": "CalendarDayInjectionSolvent_BBLPerDAY",
+						"type": "String"
+					},
+					{
+						"name": "CalendarDayInjectionGas_MCFPerDAY",
+						"type": "String"
+					},
+					{
+						"name": "CalendarDayInjectionOther_BBLPerDAY",
+						"type": "String"
+					},
+					{
+						"name": "ENVProdID",
+						"type": "String"
+					}
+				]
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/InputBlob')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/Enverus_WellHeader_CSV')]",
@@ -4161,17 +4981,245 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/OutputSQL')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"name": "[concat(parameters('factoryName'), '/whm_enverus_production_temp_Table')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"linkedServiceName": {
+					"referenceName": "OutputSQL",
+					"type": "LinkedServiceReference"
+				},
 				"annotations": [],
-				"type": "AzureSqlDatabase",
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "WellID",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "CompletionID",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "API_UWI",
+						"type": "nvarchar"
+					},
+					{
+						"name": "WellName",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ProducingMonth",
+						"type": "date"
+					},
+					{
+						"name": "TotalProdMonths",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "TotalCompletionMonths",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "ProducingDays",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "Prod_BOE",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "Prod_MCFE",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "LiquidsProd_BBL",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "GasProd_MCF",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "WaterProd_BBL",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "RepGasProd_MCF",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "CDProd_BOEPerDAY",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "CDProd_MCFEPerDAY",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "CDLiquids_BBLPerDAY",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "CDGas_MCFPerDAY",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "CDWater_BBLPerDAY",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "CDRepGas_MCFPerDAY",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "PDProd_BOEPerDAY",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "PDProd_MCFEPerDAY",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "PDLiquids_BBLPerDAY",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "PDGas_MCFPerDAY",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "PDWater_BBLPerDAY",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "PDRepGas_MCFPerDAY",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "CumProd_BOE",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "CumProd_MCFE",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "CumLiquids_BBL",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "CumGas_MCF",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "CumWater_BBL",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "CumRepGas_MCF",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "ProductionReportedMethod",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ProducingOperator",
+						"type": "nvarchar"
+					},
+					{
+						"name": "InjectionGas_MCF",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "InjectionSolvent_BBL",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "InjectionSteam_BBL",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "InjectionWater_BBL",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "InjectionOther_BBL",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "CalendarDayInjectionWater_BBLPerDAY",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "CalendarDayInjectionSteam_BBLPerDAY",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "CalendarDayInjectionSolvent_BBLPerDAY",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "CalendarDayInjectionGas_MCFPerDAY",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "CalendarDayInjectionOther_BBLPerDAY",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "ENVProdID",
+						"type": "nvarchar"
+					}
+				],
 				"typeProperties": {
-					"connectionString": "[parameters('OutputSQL_connectionString')]"
+					"schema": "enverus",
+					"table": "Production_Temp"
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/OutputSQL')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/whm_enverus_well_temp_Table')]",
@@ -5369,7 +6417,135 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Enverus_Production_CSV')]",
+			"name": "[concat(parameters('factoryName'), '/InputBlob')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('InputBlob_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/OutputSQL')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('OutputSQL_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dataflow1')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "NoviWellCSV",
+								"type": "DatasetReference"
+							},
+							"name": "NoviWellCSV"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "Novi_Well_Table",
+								"type": "DatasetReference"
+							},
+							"name": "NoviWellTempSQL"
+						}
+					],
+					"transformations": [],
+					"scriptLines": [
+						"source(output(",
+						"          Row as string,",
+						"          API as string,",
+						"          {Well Name} as string,",
+						"          {Current Operator} as string,",
+						"          {Original Operator} as string,",
+						"          Basin as string,",
+						"          Subbasin as string,",
+						"          State as string,",
+						"          County as string,",
+						"          Formation as string,",
+						"          Field as string,",
+						"          {Well type} as string,",
+						"          {Lateral Length} as string,",
+						"          {First Completion Proppant Mass} as string,",
+						"          {Frac jobs} as string,",
+						"          {Spud Date} as string,",
+						"          {Drilling Completion Date} as string,",
+						"          {First Production Date} as string,",
+						"          {Plugged Date} as string,",
+						"          TVD as string,",
+						"          MD as string,",
+						"          {Well Latitude} as string,",
+						"          {Well Longitude} as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     inferDriftedColumnTypes: true,",
+						"     ignoreNoFilesFound: false,",
+						"     rowUrlColumn: 'FileName',",
+						"     wildcardPaths:['novi_wells*']) ~> NoviWellCSV",
+						"NoviWellCSV sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     input(",
+						"          Row as integer,",
+						"          API as long,",
+						"          {Well Name} as string,",
+						"          {Current Operator} as string,",
+						"          {Original Operator} as string,",
+						"          Basin as string,",
+						"          Subbasin as string,",
+						"          State as string,",
+						"          County as string,",
+						"          Formation as string,",
+						"          Field as string,",
+						"          {Well type} as string,",
+						"          {Lateral Length} as integer,",
+						"          {First Completion Proppant Mass} as integer,",
+						"          {Frac jobs} as integer,",
+						"          {Spud Date} as date,",
+						"          {Drilling Completion Date} as date,",
+						"          {First Production Date} as date,",
+						"          {Plugged Date} as date,",
+						"          TVD as integer,",
+						"          MD as integer,",
+						"          {Well Latitude} as float,",
+						"          {Well Longitude} as float,",
+						"          {Column 23} as string",
+						"     ),",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError') ~> NoviWellTempSQL"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/NoviWellCSV')]",
+				"[concat(variables('factoryId'), '/datasets/Novi_Well_Table')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/NoviWellCSV')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -5382,193 +6558,104 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "Production_Env_MurphyWalter_AOI.csv",
-						"container": "enverus-input"
+						"container": "novi-input"
 					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
+					"columnDelimiter": "\t",
+					"escapeChar": "\"",
 					"firstRowAsHeader": true,
 					"quoteChar": "\""
 				},
 				"schema": [
 					{
-						"name": "WellID",
+						"name": "Row",
 						"type": "String"
 					},
 					{
-						"name": "CompletionID",
+						"name": "API",
 						"type": "String"
 					},
 					{
-						"name": "API_UWI",
+						"name": "Well Name",
 						"type": "String"
 					},
 					{
-						"name": "WellName",
+						"name": "Current Operator",
 						"type": "String"
 					},
 					{
-						"name": "ProducingMonth",
+						"name": "Original Operator",
 						"type": "String"
 					},
 					{
-						"name": "TotalProdMonths",
+						"name": "Basin",
 						"type": "String"
 					},
 					{
-						"name": "TotalCompletionMonths",
+						"name": "Subbasin",
 						"type": "String"
 					},
 					{
-						"name": "ProducingDays",
+						"name": "State",
 						"type": "String"
 					},
 					{
-						"name": "Prod_BOE",
+						"name": "County",
 						"type": "String"
 					},
 					{
-						"name": "Prod_MCFE",
+						"name": "Formation",
 						"type": "String"
 					},
 					{
-						"name": "LiquidsProd_BBL",
+						"name": "Field",
 						"type": "String"
 					},
 					{
-						"name": "GasProd_MCF",
+						"name": "Well type",
 						"type": "String"
 					},
 					{
-						"name": "WaterProd_BBL",
+						"name": "Lateral Length",
 						"type": "String"
 					},
 					{
-						"name": "RepGasProd_MCF",
+						"name": "First Completion Proppant Mass",
 						"type": "String"
 					},
 					{
-						"name": "CDProd_BOEPerDAY",
+						"name": "Frac jobs",
 						"type": "String"
 					},
 					{
-						"name": "CDProd_MCFEPerDAY",
+						"name": "Spud Date",
 						"type": "String"
 					},
 					{
-						"name": "CDLiquids_BBLPerDAY",
+						"name": "Drilling Completion Date",
 						"type": "String"
 					},
 					{
-						"name": "CDGas_MCFPerDAY",
+						"name": "First Production Date",
 						"type": "String"
 					},
 					{
-						"name": "CDWater_BBLPerDAY",
+						"name": "Plugged Date",
 						"type": "String"
 					},
 					{
-						"name": "CDRepGas_MCFPerDAY",
+						"name": "TVD",
 						"type": "String"
 					},
 					{
-						"name": "PDProd_BOEPerDAY",
+						"name": "MD",
 						"type": "String"
 					},
 					{
-						"name": "PDProd_MCFEPerDAY",
+						"name": "Well Latitude",
 						"type": "String"
 					},
 					{
-						"name": "PDLiquids_BBLPerDAY",
-						"type": "String"
-					},
-					{
-						"name": "PDGas_MCFPerDAY",
-						"type": "String"
-					},
-					{
-						"name": "PDWater_BBLPerDAY",
-						"type": "String"
-					},
-					{
-						"name": "PDRepGas_MCFPerDAY",
-						"type": "String"
-					},
-					{
-						"name": "CumProd_BOE",
-						"type": "String"
-					},
-					{
-						"name": "CumProd_MCFE",
-						"type": "String"
-					},
-					{
-						"name": "CumLiquids_BBL",
-						"type": "String"
-					},
-					{
-						"name": "CumGas_MCF",
-						"type": "String"
-					},
-					{
-						"name": "CumWater_BBL",
-						"type": "String"
-					},
-					{
-						"name": "CumRepGas_MCF",
-						"type": "String"
-					},
-					{
-						"name": "ProductionReportedMethod",
-						"type": "String"
-					},
-					{
-						"name": "ProducingOperator",
-						"type": "String"
-					},
-					{
-						"name": "InjectionGas_MCF",
-						"type": "String"
-					},
-					{
-						"name": "InjectionSolvent_BBL",
-						"type": "String"
-					},
-					{
-						"name": "InjectionSteam_BBL",
-						"type": "String"
-					},
-					{
-						"name": "InjectionWater_BBL",
-						"type": "String"
-					},
-					{
-						"name": "InjectionOther_BBL",
-						"type": "String"
-					},
-					{
-						"name": "CalendarDayInjectionWater_BBLPerDAY",
-						"type": "String"
-					},
-					{
-						"name": "CalendarDayInjectionSteam_BBLPerDAY",
-						"type": "String"
-					},
-					{
-						"name": "CalendarDayInjectionSolvent_BBLPerDAY",
-						"type": "String"
-					},
-					{
-						"name": "CalendarDayInjectionGas_MCFPerDAY",
-						"type": "String"
-					},
-					{
-						"name": "CalendarDayInjectionOther_BBLPerDAY",
-						"type": "String"
-					},
-					{
-						"name": "ENVProdID",
+						"name": "Well Longitude",
 						"type": "String"
 					}
 				]
@@ -5578,7 +6665,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/whm_enverus_production_temp_Table')]",
+			"name": "[concat(parameters('factoryName'), '/Novi_Well_Table')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -5590,228 +6677,114 @@
 				"type": "AzureSqlTable",
 				"schema": [
 					{
-						"name": "WellID",
+						"name": "Row",
+						"type": "smallint",
+						"precision": 5
+					},
+					{
+						"name": "API",
 						"type": "bigint",
 						"precision": 19
 					},
 					{
-						"name": "CompletionID",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "API_UWI",
+						"name": "Well Name",
 						"type": "nvarchar"
 					},
 					{
-						"name": "WellName",
+						"name": "Current Operator",
 						"type": "nvarchar"
 					},
 					{
-						"name": "ProducingMonth",
+						"name": "Original Operator",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Basin",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Subbasin",
+						"type": "nvarchar"
+					},
+					{
+						"name": "State",
+						"type": "nvarchar"
+					},
+					{
+						"name": "County",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Formation",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Field",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Well type",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Lateral Length",
+						"type": "smallint",
+						"precision": 5
+					},
+					{
+						"name": "First Completion Proppant Mass",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "Frac jobs",
+						"type": "smallint",
+						"precision": 5
+					},
+					{
+						"name": "Spud Date",
 						"type": "date"
 					},
 					{
-						"name": "TotalProdMonths",
-						"type": "int",
-						"precision": 10
+						"name": "Drilling Completion Date",
+						"type": "date"
 					},
 					{
-						"name": "TotalCompletionMonths",
-						"type": "int",
-						"precision": 10
+						"name": "First Production Date",
+						"type": "date"
 					},
 					{
-						"name": "ProducingDays",
-						"type": "float",
-						"precision": 15
+						"name": "Plugged Date",
+						"type": "date"
 					},
 					{
-						"name": "Prod_BOE",
-						"type": "float",
-						"precision": 15
+						"name": "TVD",
+						"type": "smallint",
+						"precision": 5
 					},
 					{
-						"name": "Prod_MCFE",
-						"type": "float",
-						"precision": 15
+						"name": "MD",
+						"type": "smallint",
+						"precision": 5
 					},
 					{
-						"name": "LiquidsProd_BBL",
-						"type": "float",
-						"precision": 15
+						"name": "Well Latitude",
+						"type": "real",
+						"precision": 7
 					},
 					{
-						"name": "GasProd_MCF",
-						"type": "float",
-						"precision": 15
+						"name": "Well Longitude",
+						"type": "real",
+						"precision": 7
 					},
 					{
-						"name": "WaterProd_BBL",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "RepGasProd_MCF",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "CDProd_BOEPerDAY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "CDProd_MCFEPerDAY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "CDLiquids_BBLPerDAY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "CDGas_MCFPerDAY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "CDWater_BBLPerDAY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "CDRepGas_MCFPerDAY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "PDProd_BOEPerDAY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "PDProd_MCFEPerDAY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "PDLiquids_BBLPerDAY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "PDGas_MCFPerDAY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "PDWater_BBLPerDAY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "PDRepGas_MCFPerDAY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "CumProd_BOE",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "CumProd_MCFE",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "CumLiquids_BBL",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "CumGas_MCF",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "CumWater_BBL",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "CumRepGas_MCF",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "ProductionReportedMethod",
-						"type": "nvarchar"
-					},
-					{
-						"name": "ProducingOperator",
-						"type": "nvarchar"
-					},
-					{
-						"name": "InjectionGas_MCF",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "InjectionSolvent_BBL",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "InjectionSteam_BBL",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "InjectionWater_BBL",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "InjectionOther_BBL",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "CalendarDayInjectionWater_BBLPerDAY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "CalendarDayInjectionSteam_BBLPerDAY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "CalendarDayInjectionSolvent_BBLPerDAY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "CalendarDayInjectionGas_MCFPerDAY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "CalendarDayInjectionOther_BBLPerDAY",
-						"type": "float",
-						"precision": 15
-					},
-					{
-						"name": "ENVProdID",
+						"name": "Column 23",
 						"type": "nvarchar"
 					}
 				],
 				"typeProperties": {
-					"schema": "enverus",
-					"table": "Production_Temp"
+					"schema": "novi",
+					"table": "Well_Temp"
 				}
 			},
 			"dependsOn": [
@@ -5819,15 +6792,14 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Enverus Production Pipeline')]",
+			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"description": "Enverus csv --> SQL",
 				"activities": [
 					{
-						"name": "Enverus Production CSV to SQL",
-						"type": "Copy",
+						"name": "dataflow1",
+						"type": "ExecuteDataFlow",
 						"dependsOn": [],
 						"policy": {
 							"timeout": "0.12:00:00",
@@ -5838,597 +6810,22 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
+							"dataflow": {
+								"referenceName": "dataflow1",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"NoviWellCSV": {},
+									"NoviWellTempSQL": {}
 								}
 							},
-							"sink": {
-								"type": "AzureSqlSink",
-								"writeBehavior": "upsert",
-								"upsertSettings": {
-									"useTempDB": true,
-									"keys": [
-										"WellID",
-										"CompletionID",
-										"ProducingMonth"
-									]
-								},
-								"sqlWriterUseTableLock": false,
-								"disableMetricsCollection": false
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
 							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "WellID",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "WellID",
-											"type": "Int64",
-											"physicalType": "bigint"
-										}
-									},
-									{
-										"source": {
-											"name": "CompletionID",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CompletionID",
-											"type": "Int64",
-											"physicalType": "bigint"
-										}
-									},
-									{
-										"source": {
-											"name": "API_UWI",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "API_UWI",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "WellName",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "WellName",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "ProducingMonth",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "ProducingMonth",
-											"type": "DateTime",
-											"physicalType": "date"
-										}
-									},
-									{
-										"source": {
-											"name": "TotalProdMonths",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "TotalProdMonths",
-											"type": "Int32",
-											"physicalType": "int"
-										}
-									},
-									{
-										"source": {
-											"name": "TotalCompletionMonths",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "TotalCompletionMonths",
-											"type": "Int32",
-											"physicalType": "int"
-										}
-									},
-									{
-										"source": {
-											"name": "ProducingDays",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "ProducingDays",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "Prod_BOE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "Prod_BOE",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "Prod_MCFE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "Prod_MCFE",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "LiquidsProd_BBL",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "LiquidsProd_BBL",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "GasProd_MCF",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "GasProd_MCF",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "WaterProd_BBL",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "WaterProd_BBL",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "RepGasProd_MCF",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "RepGasProd_MCF",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "CDProd_BOEPerDAY",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CDProd_BOEPerDAY",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "CDProd_MCFEPerDAY",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CDProd_MCFEPerDAY",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "CDLiquids_BBLPerDAY",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CDLiquids_BBLPerDAY",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "CDGas_MCFPerDAY",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CDGas_MCFPerDAY",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "CDWater_BBLPerDAY",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CDWater_BBLPerDAY",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "CDRepGas_MCFPerDAY",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CDRepGas_MCFPerDAY",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "PDProd_BOEPerDAY",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "PDProd_BOEPerDAY",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "PDProd_MCFEPerDAY",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "PDProd_MCFEPerDAY",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "PDLiquids_BBLPerDAY",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "PDLiquids_BBLPerDAY",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "PDGas_MCFPerDAY",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "PDGas_MCFPerDAY",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "PDWater_BBLPerDAY",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "PDWater_BBLPerDAY",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "PDRepGas_MCFPerDAY",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "PDRepGas_MCFPerDAY",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "CumProd_BOE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CumProd_BOE",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "CumProd_MCFE",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CumProd_MCFE",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "CumLiquids_BBL",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CumLiquids_BBL",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "CumGas_MCF",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CumGas_MCF",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "CumWater_BBL",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CumWater_BBL",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "CumRepGas_MCF",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CumRepGas_MCF",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "ProductionReportedMethod",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "ProductionReportedMethod",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "ProducingOperator",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "ProducingOperator",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									},
-									{
-										"source": {
-											"name": "InjectionGas_MCF",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "InjectionGas_MCF",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "InjectionSolvent_BBL",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "InjectionSolvent_BBL",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "InjectionSteam_BBL",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "InjectionSteam_BBL",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "InjectionWater_BBL",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "InjectionWater_BBL",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "InjectionOther_BBL",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "InjectionOther_BBL",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "CalendarDayInjectionWater_BBLPerDAY",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CalendarDayInjectionWater_BBLPerDAY",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "CalendarDayInjectionSteam_BBLPerDAY",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CalendarDayInjectionSteam_BBLPerDAY",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "CalendarDayInjectionSolvent_BBLPerDAY",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CalendarDayInjectionSolvent_BBLPerDAY",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "CalendarDayInjectionGas_MCFPerDAY",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CalendarDayInjectionGas_MCFPerDAY",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "CalendarDayInjectionOther_BBLPerDAY",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CalendarDayInjectionOther_BBLPerDAY",
-											"type": "Double",
-											"physicalType": "float"
-										}
-									},
-									{
-										"source": {
-											"name": "ENVProdID",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "ENVProdID",
-											"type": "String",
-											"physicalType": "nvarchar"
-										}
-									}
-								],
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Enverus_Production_CSV",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "whm_enverus_production_temp_Table",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
+							"traceLevel": "Coarse"
+						}
 					}
 				],
 				"policy": {
@@ -6438,8 +6835,7 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/Enverus_Production_CSV')]",
-				"[concat(variables('factoryId'), '/datasets/whm_enverus_production_temp_Table')]"
+				"[concat(variables('factoryId'), '/dataflows/dataflow1')]"
 			]
 		}
 	]

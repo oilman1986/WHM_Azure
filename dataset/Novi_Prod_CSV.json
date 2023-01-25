@@ -10,11 +10,12 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "novi_production_forecast_1670188295.csv",
 				"container": "novi-input-prod"
 			},
 			"columnDelimiter": "\t",
 			"encodingName": "UTF-8 without BOM",
-			"escapeChar": "\"",
+			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},

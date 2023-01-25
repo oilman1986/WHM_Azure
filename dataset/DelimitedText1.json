@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "novi_wells_1669667865.csv",
 				"container": "novi-input"
 			},
 			"columnDelimiter": "\t",

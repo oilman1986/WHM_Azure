@@ -1,5 +1,5 @@
 {
-	"name": "Novi_Well_Table",
+	"name": "whm_novi_prod_temp_table",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "OutputSQL",
@@ -116,7 +116,7 @@
 		],
 		"typeProperties": {
 			"schema": "novi",
-			"table": "Well_Temp"
+			"table": "Production_Temp"
 		}
 	}
 }

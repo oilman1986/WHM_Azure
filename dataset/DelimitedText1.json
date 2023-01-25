@@ -1,0 +1,116 @@
+{
+	"name": "DelimitedText1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "InputBlob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "novi_wells_1669667865.csv",
+				"container": "novi-input"
+			},
+			"columnDelimiter": "\t",
+			"escapeChar": "\"",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Row",
+				"type": "String"
+			},
+			{
+				"name": "API",
+				"type": "String"
+			},
+			{
+				"name": "Well Name",
+				"type": "String"
+			},
+			{
+				"name": "Current Operator",
+				"type": "String"
+			},
+			{
+				"name": "Original Operator",
+				"type": "String"
+			},
+			{
+				"name": "Basin",
+				"type": "String"
+			},
+			{
+				"name": "Subbasin",
+				"type": "String"
+			},
+			{
+				"name": "State",
+				"type": "String"
+			},
+			{
+				"name": "County",
+				"type": "String"
+			},
+			{
+				"name": "Formation",
+				"type": "String"
+			},
+			{
+				"name": "Field",
+				"type": "String"
+			},
+			{
+				"name": "Well type",
+				"type": "String"
+			},
+			{
+				"name": "Lateral Length",
+				"type": "String"
+			},
+			{
+				"name": "First Completion Proppant Mass",
+				"type": "String"
+			},
+			{
+				"name": "Frac jobs",
+				"type": "String"
+			},
+			{
+				"name": "Spud Date",
+				"type": "String"
+			},
+			{
+				"name": "Drilling Completion Date",
+				"type": "String"
+			},
+			{
+				"name": "First Production Date",
+				"type": "String"
+			},
+			{
+				"name": "Plugged Date",
+				"type": "String"
+			},
+			{
+				"name": "TVD",
+				"type": "String"
+			},
+			{
+				"name": "MD",
+				"type": "String"
+			},
+			{
+				"name": "Well Latitude",
+				"type": "String"
+			},
+			{
+				"name": "Well Longitude",
+				"type": "String"
+			}
+		]
+	}
+}

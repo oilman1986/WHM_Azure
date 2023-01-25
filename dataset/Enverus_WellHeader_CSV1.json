@@ -1,0 +1,1028 @@
+{
+	"name": "Enverus_WellHeader_CSV1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "InputBlob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Wells_Env_MurphyWalter_AOI.csv",
+				"container": "enverus-input"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "API_UWI",
+				"type": "String"
+			},
+			{
+				"name": "Unformatted_API_UWI",
+				"type": "String"
+			},
+			{
+				"name": "API_UWI_12",
+				"type": "String"
+			},
+			{
+				"name": "Unformatted_API_UWI_12",
+				"type": "String"
+			},
+			{
+				"name": "API_UWI_14",
+				"type": "String"
+			},
+			{
+				"name": "Unformatted_API_UWI_14",
+				"type": "String"
+			},
+			{
+				"name": "WellID",
+				"type": "String"
+			},
+			{
+				"name": "CompletionID",
+				"type": "String"
+			},
+			{
+				"name": "WellPadID",
+				"type": "String"
+			},
+			{
+				"name": "WellPadDirection",
+				"type": "String"
+			},
+			{
+				"name": "ENVWellGrouping",
+				"type": "String"
+			},
+			{
+				"name": "CompletionNumber",
+				"type": "String"
+			},
+			{
+				"name": "WellName",
+				"type": "String"
+			},
+			{
+				"name": "Country",
+				"type": "String"
+			},
+			{
+				"name": "StateProvince",
+				"type": "String"
+			},
+			{
+				"name": "County",
+				"type": "String"
+			},
+			{
+				"name": "Lease",
+				"type": "String"
+			},
+			{
+				"name": "LeaseName",
+				"type": "String"
+			},
+			{
+				"name": "ENVOperator",
+				"type": "String"
+			},
+			{
+				"name": "RawOperator",
+				"type": "String"
+			},
+			{
+				"name": "InitialOperator",
+				"type": "String"
+			},
+			{
+				"name": "ENVTicker",
+				"type": "String"
+			},
+			{
+				"name": "ENV_Peer_Group",
+				"type": "String"
+			},
+			{
+				"name": "ENV_Stock_Exchange",
+				"type": "String"
+			},
+			{
+				"name": "ENVWellServiceProvider",
+				"type": "String"
+			},
+			{
+				"name": "ENVProdWellType",
+				"type": "String"
+			},
+			{
+				"name": "StateWellType",
+				"type": "String"
+			},
+			{
+				"name": "ENVWellType",
+				"type": "String"
+			},
+			{
+				"name": "ENVProducingMethod",
+				"type": "String"
+			},
+			{
+				"name": "ENVRegion",
+				"type": "String"
+			},
+			{
+				"name": "ENVBasin",
+				"type": "String"
+			},
+			{
+				"name": "ENVPlay",
+				"type": "String"
+			},
+			{
+				"name": "ENVSubPlay",
+				"type": "String"
+			},
+			{
+				"name": "ENVInterval",
+				"type": "String"
+			},
+			{
+				"name": "ENVIntervalSource",
+				"type": "String"
+			},
+			{
+				"name": "ENVWellStatus",
+				"type": "String"
+			},
+			{
+				"name": "ENVWellboreStatus",
+				"type": "String"
+			},
+			{
+				"name": "OnConfidential",
+				"type": "String"
+			},
+			{
+				"name": "OffConfidentialDate",
+				"type": "String"
+			},
+			{
+				"name": "Trajectory",
+				"type": "String"
+			},
+			{
+				"name": "ENVWellboreType",
+				"type": "String"
+			},
+			{
+				"name": "Formation",
+				"type": "String"
+			},
+			{
+				"name": "FirstProdDate",
+				"type": "String"
+			},
+			{
+				"name": "Latitude",
+				"type": "String"
+			},
+			{
+				"name": "Longitude",
+				"type": "String"
+			},
+			{
+				"name": "Latitude_BH",
+				"type": "String"
+			},
+			{
+				"name": "Longitude_BH",
+				"type": "String"
+			},
+			{
+				"name": "TVD_FT",
+				"type": "String"
+			},
+			{
+				"name": "MD_FT",
+				"type": "String"
+			},
+			{
+				"name": "District",
+				"type": "String"
+			},
+			{
+				"name": "Field",
+				"type": "String"
+			},
+			{
+				"name": "Survey",
+				"type": "String"
+			},
+			{
+				"name": "Block",
+				"type": "String"
+			},
+			{
+				"name": "Abstract",
+				"type": "String"
+			},
+			{
+				"name": "Platform",
+				"type": "String"
+			},
+			{
+				"name": "Section",
+				"type": "String"
+			},
+			{
+				"name": "Township",
+				"type": "String"
+			},
+			{
+				"name": "Range",
+				"type": "String"
+			},
+			{
+				"name": "Section_Township_Range",
+				"type": "String"
+			},
+			{
+				"name": "Unit_Name",
+				"type": "String"
+			},
+			{
+				"name": "WellNumber",
+				"type": "String"
+			},
+			{
+				"name": "SurfaceLatitudeLongitudeSource",
+				"type": "String"
+			},
+			{
+				"name": "PlugDate",
+				"type": "String"
+			},
+			{
+				"name": "PlugbackMeasuredDepth_FT",
+				"type": "String"
+			},
+			{
+				"name": "PlugbackTrueVerticalDepth_FT",
+				"type": "String"
+			},
+			{
+				"name": "AvgBreakdownPressure_PSI",
+				"type": "String"
+			},
+			{
+				"name": "AvgClusterSpacingPerStage_FT",
+				"type": "String"
+			},
+			{
+				"name": "AvgClusterSpacing_FT",
+				"type": "String"
+			},
+			{
+				"name": "AvgFracGradient_PSIPerFT",
+				"type": "String"
+			},
+			{
+				"name": "AvgISIP_PSI",
+				"type": "String"
+			},
+			{
+				"name": "AvgMillTime_Min",
+				"type": "String"
+			},
+			{
+				"name": "AvgPortSleeveOpeningPressure_PSI",
+				"type": "String"
+			},
+			{
+				"name": "AvgShotsPerCluster",
+				"type": "String"
+			},
+			{
+				"name": "AvgShotsPerFt",
+				"type": "String"
+			},
+			{
+				"name": "AvgTreatmentPressure_PSI",
+				"type": "String"
+			},
+			{
+				"name": "AvgTreatmentRate_BBLPerMin",
+				"type": "String"
+			},
+			{
+				"name": "ClustersPer1,000Ft",
+				"type": "String"
+			},
+			{
+				"name": "ClustersPerStage",
+				"type": "String"
+			},
+			{
+				"name": "ShotsPer1,000Ft",
+				"type": "String"
+			},
+			{
+				"name": "ShotsPerStage",
+				"type": "String"
+			},
+			{
+				"name": "TotalShots",
+				"type": "String"
+			},
+			{
+				"name": "AvgFluidPerCluster_BBL",
+				"type": "String"
+			},
+			{
+				"name": "AvgFluidPerShot_BBL",
+				"type": "String"
+			},
+			{
+				"name": "AvgFluidPerStage_BBL",
+				"type": "String"
+			},
+			{
+				"name": "FracRigOnsiteDate",
+				"type": "String"
+			},
+			{
+				"name": "FracRigReleaseDate",
+				"type": "String"
+			},
+			{
+				"name": "AvgProppantPerCluster_LBS",
+				"type": "String"
+			},
+			{
+				"name": "AvgProppantPerShot_LBS",
+				"type": "String"
+			},
+			{
+				"name": "AvgProppantPerStage_LBS",
+				"type": "String"
+			},
+			{
+				"name": "StimulatedStages",
+				"type": "String"
+			},
+			{
+				"name": "TotalClusters",
+				"type": "String"
+			},
+			{
+				"name": "Vintage",
+				"type": "String"
+			},
+			{
+				"name": "FirstProdQuarter",
+				"type": "String"
+			},
+			{
+				"name": "FirstProdMonth",
+				"type": "String"
+			},
+			{
+				"name": "ENVElevationKB_FT",
+				"type": "String"
+			},
+			{
+				"name": "ENVElevationKBSource",
+				"type": "String"
+			},
+			{
+				"name": "ENVElevationGL_FT",
+				"type": "String"
+			},
+			{
+				"name": "ENVElevationGLSource",
+				"type": "String"
+			},
+			{
+				"name": "ElevationKB_FT",
+				"type": "String"
+			},
+			{
+				"name": "ElevationGL_FT",
+				"type": "String"
+			},
+			{
+				"name": "CoordinateSource",
+				"type": "String"
+			},
+			{
+				"name": "PermitApprovedDate",
+				"type": "String"
+			},
+			{
+				"name": "PermitSubmittedDate",
+				"type": "String"
+			},
+			{
+				"name": "SpudDate",
+				"type": "String"
+			},
+			{
+				"name": "DrillingEndDate",
+				"type": "String"
+			},
+			{
+				"name": "RigReleaseDate",
+				"type": "String"
+			},
+			{
+				"name": "CompletionDate",
+				"type": "String"
+			},
+			{
+				"name": "FirstDay",
+				"type": "String"
+			},
+			{
+				"name": "ENVCompInsertedDate",
+				"type": "String"
+			},
+			{
+				"name": "StateFileNumber",
+				"type": "String"
+			},
+			{
+				"name": "ENVFracJobType",
+				"type": "String"
+			},
+			{
+				"name": "ENVFluidType",
+				"type": "String"
+			},
+			{
+				"name": "CompletionTime_DAYS",
+				"type": "String"
+			},
+			{
+				"name": "CompletionDesign",
+				"type": "String"
+			},
+			{
+				"name": "PermitToSpud_DAYS",
+				"type": "String"
+			},
+			{
+				"name": "SpudToRigRelease_DAYS",
+				"type": "String"
+			},
+			{
+				"name": "SpudToCompletion_DAYS",
+				"type": "String"
+			},
+			{
+				"name": "SpudToSales_DAYS",
+				"type": "String"
+			},
+			{
+				"name": "SoakTime_DAYS",
+				"type": "String"
+			},
+			{
+				"name": "NumberOfStrings",
+				"type": "String"
+			},
+			{
+				"name": "UpperPerf_FT",
+				"type": "String"
+			},
+			{
+				"name": "LowerPerf_FT",
+				"type": "String"
+			},
+			{
+				"name": "PerfInterval_FT",
+				"type": "String"
+			},
+			{
+				"name": "LateralLength_FT",
+				"type": "String"
+			},
+			{
+				"name": "FracStages",
+				"type": "String"
+			},
+			{
+				"name": "AverageStageSpacing_FT",
+				"type": "String"
+			},
+			{
+				"name": "ENVProppantBrand",
+				"type": "String"
+			},
+			{
+				"name": "ProppantLoading_LBSPerGAL",
+				"type": "String"
+			},
+			{
+				"name": "ENVProppantType",
+				"type": "String"
+			},
+			{
+				"name": "ProppantIntensity_LBSPerFT",
+				"type": "String"
+			},
+			{
+				"name": "Proppant_LBS",
+				"type": "String"
+			},
+			{
+				"name": "TotalWaterPumped_GAL",
+				"type": "String"
+			},
+			{
+				"name": "WaterIntensity_GALPerFT",
+				"type": "String"
+			},
+			{
+				"name": "TotalFluidPumped_BBL",
+				"type": "String"
+			},
+			{
+				"name": "FluidIntensity_BBLPerFT",
+				"type": "String"
+			},
+			{
+				"name": "AcidVolume_BBL",
+				"type": "String"
+			},
+			{
+				"name": "Bottom_Hole_Temp_DEGF",
+				"type": "String"
+			},
+			{
+				"name": "Biocide_LBS",
+				"type": "String"
+			},
+			{
+				"name": "Breaker_LBS",
+				"type": "String"
+			},
+			{
+				"name": "Buffer_LBS",
+				"type": "String"
+			},
+			{
+				"name": "ClayControl_LBS",
+				"type": "String"
+			},
+			{
+				"name": "CrossLinker_LBS",
+				"type": "String"
+			},
+			{
+				"name": "FrictionReducer_LBS",
+				"type": "String"
+			},
+			{
+				"name": "GellingAgent_LBS",
+				"type": "String"
+			},
+			{
+				"name": "IronControl_LBS",
+				"type": "String"
+			},
+			{
+				"name": "ScaleInhibitor_LBS",
+				"type": "String"
+			},
+			{
+				"name": "Surfactant_LBS",
+				"type": "String"
+			},
+			{
+				"name": "Energizer_LBS",
+				"type": "String"
+			},
+			{
+				"name": "Diverter_LBS",
+				"type": "String"
+			},
+			{
+				"name": "TestDate",
+				"type": "String"
+			},
+			{
+				"name": "ChokeSize_64IN",
+				"type": "String"
+			},
+			{
+				"name": "TestRate_BOEPerDAY",
+				"type": "String"
+			},
+			{
+				"name": "TestRate_BOEPerDAYPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "TestRate_MCFEPerDAY",
+				"type": "String"
+			},
+			{
+				"name": "OilTestRate_BBLPerDAY",
+				"type": "String"
+			},
+			{
+				"name": "OilTestRate_BBLPerDAYPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "GasTestRate_MCFPerDAY",
+				"type": "String"
+			},
+			{
+				"name": "GasTestRate_MCFPerDAYPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "WaterTestRate_BBLPerDAY",
+				"type": "String"
+			},
+			{
+				"name": "WaterTestRate_BBLPerDAYPer1000Ft",
+				"type": "String"
+			},
+			{
+				"name": "WaterDepth",
+				"type": "String"
+			},
+			{
+				"name": "TestWHLiquids_PCT",
+				"type": "String"
+			},
+			{
+				"name": "CasingPressure_PSI",
+				"type": "String"
+			},
+			{
+				"name": "FlowingTubingPressure_PSI",
+				"type": "String"
+			},
+			{
+				"name": "ShutInPressure_PSI",
+				"type": "String"
+			},
+			{
+				"name": "OilProdPriorTest_BBL",
+				"type": "String"
+			},
+			{
+				"name": "OilTestMethodName",
+				"type": "String"
+			},
+			{
+				"name": "OilGravity_API",
+				"type": "String"
+			},
+			{
+				"name": "GasGravity_SG",
+				"type": "String"
+			},
+			{
+				"name": "First3MonthProd_BOE",
+				"type": "String"
+			},
+			{
+				"name": "First3MonthProd_BOEPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "First3MonthGas_MCF",
+				"type": "String"
+			},
+			{
+				"name": "First3MonthGas_MCFPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "First3MonthProd_MCFE",
+				"type": "String"
+			},
+			{
+				"name": "First3MonthProd_MCFEPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "First3MonthOil_BBL",
+				"type": "String"
+			},
+			{
+				"name": "First3MonthOil_BBLPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "First3MonthWater_BBL",
+				"type": "String"
+			},
+			{
+				"name": "First6MonthProd_BOE",
+				"type": "String"
+			},
+			{
+				"name": "First6MonthProd_BOEPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "First6MonthGas_MCF",
+				"type": "String"
+			},
+			{
+				"name": "First6MonthGas_MCFPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "First6MonthProd_MCFE",
+				"type": "String"
+			},
+			{
+				"name": "First6MonthProd_MCFEPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "First6MonthOil_BBL",
+				"type": "String"
+			},
+			{
+				"name": "First6MonthOil_BBLPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "First6MonthWater_BBL",
+				"type": "String"
+			},
+			{
+				"name": "First9MonthProd_BOE",
+				"type": "String"
+			},
+			{
+				"name": "First9MonthProd_BOEPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "First9MonthGas_MCF",
+				"type": "String"
+			},
+			{
+				"name": "First9MonthGas_MCFPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "First9MonthProd_MCFE",
+				"type": "String"
+			},
+			{
+				"name": "First9MonthProd_MCFEPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "First9MonthOil_BBL",
+				"type": "String"
+			},
+			{
+				"name": "First9MonthOil_BBLPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "First9MonthWater_BBL",
+				"type": "String"
+			},
+			{
+				"name": "First12MonthProd_BOE",
+				"type": "String"
+			},
+			{
+				"name": "First12MonthProd_BOEPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "First12MonthGas_MCF",
+				"type": "String"
+			},
+			{
+				"name": "First12MonthGas_MCFPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "First12MonthProd_MCFE",
+				"type": "String"
+			},
+			{
+				"name": "First12MonthProd_MCFEPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "First12MonthOil_BBL",
+				"type": "String"
+			},
+			{
+				"name": "First12MonthOil_BBLPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "First12MonthWater_BBL",
+				"type": "String"
+			},
+			{
+				"name": "First36MonthProd_BOE",
+				"type": "String"
+			},
+			{
+				"name": "First36MonthProd_BOEPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "First36MonthGas_MCF",
+				"type": "String"
+			},
+			{
+				"name": "First36MonthGas_MCFPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "First36MonthProd_MCFE",
+				"type": "String"
+			},
+			{
+				"name": "First36MonthProd_MCFEPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "First36MonthOil_BBL",
+				"type": "String"
+			},
+			{
+				"name": "First36MonthOil_BBLPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "First36MonthWater_BBL",
+				"type": "String"
+			},
+			{
+				"name": "First36MonthWaterProductionBBLPer1000Ft",
+				"type": "String"
+			},
+			{
+				"name": "PeakProductionDate",
+				"type": "String"
+			},
+			{
+				"name": "MonthsToPeakProduction",
+				"type": "String"
+			},
+			{
+				"name": "PeakProd_BOE",
+				"type": "String"
+			},
+			{
+				"name": "PeakProd_BOEPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "PeakGas_MCF",
+				"type": "String"
+			},
+			{
+				"name": "PeakGas_MCFPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "PeakProd_MCFE",
+				"type": "String"
+			},
+			{
+				"name": "PeakProd_MCFEPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "PeakOil_BBL",
+				"type": "String"
+			},
+			{
+				"name": "PeakOil_BBLPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "PeakWater_BBL",
+				"type": "String"
+			},
+			{
+				"name": "CumProd_BOE",
+				"type": "String"
+			},
+			{
+				"name": "CumProd_BOEPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "CumGas_MCF",
+				"type": "String"
+			},
+			{
+				"name": "CumGas_MCFPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "CumProd_MCFE",
+				"type": "String"
+			},
+			{
+				"name": "CumProd_MCFEPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "CumOil_BBL",
+				"type": "String"
+			},
+			{
+				"name": "CumOil_BBLPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "CumWater_BBL",
+				"type": "String"
+			},
+			{
+				"name": "TotalProducingMonths",
+				"type": "String"
+			},
+			{
+				"name": "LastProducingMonth",
+				"type": "String"
+			},
+			{
+				"name": "LastMonthLiquidsProduction_BBL",
+				"type": "String"
+			},
+			{
+				"name": "LastMonthGasProduction_MCF",
+				"type": "String"
+			},
+			{
+				"name": "LastMonthWaterProduction_BBL",
+				"type": "String"
+			},
+			{
+				"name": "Last12MonthBOEProduction",
+				"type": "String"
+			},
+			{
+				"name": "Last12MonthGasProduction_MCF",
+				"type": "String"
+			},
+			{
+				"name": "Last12MonthOilProduction_BBL",
+				"type": "String"
+			},
+			{
+				"name": "Last12MonthWaterProduction_BBL",
+				"type": "String"
+			},
+			{
+				"name": "WHLiquids_PCT",
+				"type": "String"
+			},
+			{
+				"name": "GOR_ScfPerBbl",
+				"type": "String"
+			},
+			{
+				"name": "CumulativeSOR",
+				"type": "String"
+			},
+			{
+				"name": "Last3MonthISOR",
+				"type": "String"
+			},
+			{
+				"name": "SpudDateSource",
+				"type": "String"
+			},
+			{
+				"name": "TestRate_MCFEPerDAYPer1000FT",
+				"type": "String"
+			},
+			{
+				"name": "FirstProdYear",
+				"type": "String"
+			}
+		]
+	}
+}

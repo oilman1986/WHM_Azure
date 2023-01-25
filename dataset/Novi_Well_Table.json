@@ -1,115 +1,122 @@
 {
-	"name": "NoviWellCSV",
+	"name": "Novi_Well_Table",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "InputBlob",
+			"referenceName": "OutputSQL",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
-		"type": "DelimitedText",
-		"typeProperties": {
-			"location": {
-				"type": "AzureBlobStorageLocation",
-				"container": "novi-input"
-			},
-			"columnDelimiter": "\t",
-			"escapeChar": "\"",
-			"firstRowAsHeader": true,
-			"quoteChar": "\""
-		},
+		"type": "AzureSqlTable",
 		"schema": [
 			{
 				"name": "Row",
-				"type": "String"
+				"type": "smallint",
+				"precision": 5
 			},
 			{
 				"name": "API",
-				"type": "String"
+				"type": "bigint",
+				"precision": 19
 			},
 			{
 				"name": "Well Name",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Current Operator",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Original Operator",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Basin",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Subbasin",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "State",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "County",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Formation",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Field",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Well type",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Lateral Length",
-				"type": "String"
+				"type": "smallint",
+				"precision": 5
 			},
 			{
 				"name": "First Completion Proppant Mass",
-				"type": "String"
+				"type": "int",
+				"precision": 10
 			},
 			{
 				"name": "Frac jobs",
-				"type": "String"
+				"type": "smallint",
+				"precision": 5
 			},
 			{
 				"name": "Spud Date",
-				"type": "String"
+				"type": "date"
 			},
 			{
 				"name": "Drilling Completion Date",
-				"type": "String"
+				"type": "date"
 			},
 			{
 				"name": "First Production Date",
-				"type": "String"
+				"type": "date"
 			},
 			{
 				"name": "Plugged Date",
-				"type": "String"
+				"type": "date"
 			},
 			{
 				"name": "TVD",
-				"type": "String"
+				"type": "smallint",
+				"precision": 5
 			},
 			{
 				"name": "MD",
-				"type": "String"
+				"type": "smallint",
+				"precision": 5
 			},
 			{
 				"name": "Well Latitude",
-				"type": "String"
+				"type": "real",
+				"precision": 7
 			},
 			{
 				"name": "Well Longitude",
-				"type": "String"
+				"type": "real",
+				"precision": 7
+			},
+			{
+				"name": "Column 23",
+				"type": "nvarchar"
 			}
-		]
+		],
+		"typeProperties": {
+			"schema": "novi",
+			"table": "Well_Temp"
+		}
 	}
 }

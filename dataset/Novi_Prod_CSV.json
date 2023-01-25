@@ -1,5 +1,5 @@
 {
-	"name": "NoviWellCSV",
+	"name": "Novi_Prod_CSV",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "InputBlob",
@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"container": "novi-input"
+				"container": "novi-input-prod"
 			},
 			"columnDelimiter": "\t",
 			"escapeChar": "\"",
@@ -31,83 +31,39 @@
 				"type": "String"
 			},
 			{
-				"name": "Current Operator",
+				"name": "Date",
 				"type": "String"
 			},
 			{
-				"name": "Original Operator",
+				"name": "Months on Production",
 				"type": "String"
 			},
 			{
-				"name": "Basin",
+				"name": "IsForecast",
 				"type": "String"
 			},
 			{
-				"name": "Subbasin",
+				"name": "Oil per day",
 				"type": "String"
 			},
 			{
-				"name": "State",
+				"name": "Gas per day",
 				"type": "String"
 			},
 			{
-				"name": "County",
+				"name": "Oil per month",
 				"type": "String"
 			},
 			{
-				"name": "Formation",
+				"name": "Gas per month",
 				"type": "String"
 			},
 			{
-				"name": "Field",
+				"name": "Cumulative Oil",
 				"type": "String"
 			},
 			{
-				"name": "Well type",
-				"type": "String"
-			},
-			{
-				"name": "Lateral Length",
-				"type": "String"
-			},
-			{
-				"name": "First Completion Proppant Mass",
-				"type": "String"
-			},
-			{
-				"name": "Frac jobs",
-				"type": "String"
-			},
-			{
-				"name": "Spud Date",
-				"type": "String"
-			},
-			{
-				"name": "Drilling Completion Date",
-				"type": "String"
-			},
-			{
-				"name": "First Production Date",
-				"type": "String"
-			},
-			{
-				"name": "Plugged Date",
-				"type": "String"
-			},
-			{
-				"name": "TVD",
-				"type": "String"
-			},
-			{
-				"name": "MD",
-				"type": "String"
-			},
-			{
-				"name": "Well Latitude",
-				"type": "String"
-			},
-			{
-				"name": "Well Longitude",
+				"name": "Cumulative Gas",
 				"type": "String"
 			}
 		]

@@ -60,7 +60,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "Production_Env_MurphyWalter_AOI.csv",
+						"fileName": "Production_Env_murphy_ewingbank.csv",
 						"container": "enverus-input"
 					},
 					"columnDelimiter": ",",
@@ -269,7 +269,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "Wells_Env_MurphyWalter_AOI.csv",
+						"fileName": "Wells_Env_murphy_ewingbank_wells.csv",
 						"container": "enverus-input"
 					},
 					"columnDelimiter": ",",
@@ -1280,6 +1280,82 @@
 					},
 					{
 						"name": "FirstProdYear",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/InputBlob')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Novi_Prod_CSV')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "InputBlob",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "novi-input-prod"
+					},
+					"columnDelimiter": "\t",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Row",
+						"type": "String"
+					},
+					{
+						"name": "API",
+						"type": "String"
+					},
+					{
+						"name": "Well Name",
+						"type": "String"
+					},
+					{
+						"name": "Date",
+						"type": "String"
+					},
+					{
+						"name": "Months on Production",
+						"type": "String"
+					},
+					{
+						"name": "IsForecast",
+						"type": "String"
+					},
+					{
+						"name": "Oil per day",
+						"type": "String"
+					},
+					{
+						"name": "Gas per day",
+						"type": "String"
+					},
+					{
+						"name": "Oil per month",
+						"type": "String"
+					},
+					{
+						"name": "Gas per month",
+						"type": "String"
+					},
+					{
+						"name": "Cumulative Oil",
+						"type": "String"
+					},
+					{
+						"name": "Cumulative Gas",
 						"type": "String"
 					}
 				]
@@ -2725,127 +2801,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/NoviWellCSV')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "InputBlob",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"container": "novi-input"
-					},
-					"columnDelimiter": "\t",
-					"escapeChar": "\"",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "Row",
-						"type": "String"
-					},
-					{
-						"name": "API",
-						"type": "String"
-					},
-					{
-						"name": "Well Name",
-						"type": "String"
-					},
-					{
-						"name": "Current Operator",
-						"type": "String"
-					},
-					{
-						"name": "Original Operator",
-						"type": "String"
-					},
-					{
-						"name": "Basin",
-						"type": "String"
-					},
-					{
-						"name": "Subbasin",
-						"type": "String"
-					},
-					{
-						"name": "State",
-						"type": "String"
-					},
-					{
-						"name": "County",
-						"type": "String"
-					},
-					{
-						"name": "Formation",
-						"type": "String"
-					},
-					{
-						"name": "Field",
-						"type": "String"
-					},
-					{
-						"name": "Well type",
-						"type": "String"
-					},
-					{
-						"name": "Lateral Length",
-						"type": "String"
-					},
-					{
-						"name": "First Completion Proppant Mass",
-						"type": "String"
-					},
-					{
-						"name": "Frac jobs",
-						"type": "String"
-					},
-					{
-						"name": "Spud Date",
-						"type": "String"
-					},
-					{
-						"name": "Drilling Completion Date",
-						"type": "String"
-					},
-					{
-						"name": "First Production Date",
-						"type": "String"
-					},
-					{
-						"name": "Plugged Date",
-						"type": "String"
-					},
-					{
-						"name": "TVD",
-						"type": "String"
-					},
-					{
-						"name": "MD",
-						"type": "String"
-					},
-					{
-						"name": "Well Latitude",
-						"type": "String"
-					},
-					{
-						"name": "Well Longitude",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/InputBlob')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Novi_Well_Table')]",
+			"name": "[concat(parameters('factoryName'), '/whm_novi_prod_temp_table')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -2871,100 +2827,56 @@
 						"type": "nvarchar"
 					},
 					{
-						"name": "Current Operator",
-						"type": "nvarchar"
+						"name": "Date",
+						"type": "date"
 					},
 					{
-						"name": "Original Operator",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Basin",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Subbasin",
-						"type": "nvarchar"
-					},
-					{
-						"name": "State",
-						"type": "nvarchar"
-					},
-					{
-						"name": "County",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Formation",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Field",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Well type",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Lateral Length",
+						"name": "Months on Production",
 						"type": "smallint",
 						"precision": 5
 					},
 					{
-						"name": "First Completion Proppant Mass",
-						"type": "int",
-						"precision": 10
+						"name": "IsForecast",
+						"type": "bit"
 					},
 					{
-						"name": "Frac jobs",
-						"type": "smallint",
-						"precision": 5
-					},
-					{
-						"name": "Spud Date",
-						"type": "date"
-					},
-					{
-						"name": "Drilling Completion Date",
-						"type": "date"
-					},
-					{
-						"name": "First Production Date",
-						"type": "date"
-					},
-					{
-						"name": "Plugged Date",
-						"type": "date"
-					},
-					{
-						"name": "TVD",
-						"type": "smallint",
-						"precision": 5
-					},
-					{
-						"name": "MD",
-						"type": "smallint",
-						"precision": 5
-					},
-					{
-						"name": "Well Latitude",
+						"name": "Oil per day",
 						"type": "real",
 						"precision": 7
 					},
 					{
-						"name": "Well Longitude",
+						"name": "Gas per day",
 						"type": "real",
 						"precision": 7
 					},
 					{
-						"name": "Column 23",
+						"name": "Oil per month",
+						"type": "real",
+						"precision": 7
+					},
+					{
+						"name": "Gas per month",
+						"type": "real",
+						"precision": 7
+					},
+					{
+						"name": "Cumulative Oil",
+						"type": "real",
+						"precision": 7
+					},
+					{
+						"name": "Cumulative Gas",
+						"type": "real",
+						"precision": 7
+					},
+					{
+						"name": "FileName",
 						"type": "nvarchar"
 					}
 				],
 				"typeProperties": {
 					"schema": "novi",
-					"table": "Well_Temp"
+					"table": "Production_Temp"
 				}
 			},
 			"dependsOn": [
@@ -6690,116 +6602,15 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/dataflow1')]",
-			"type": "Microsoft.DataFactory/factories/dataflows",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "MappingDataFlow",
-				"typeProperties": {
-					"sources": [
-						{
-							"dataset": {
-								"referenceName": "NoviWellCSV",
-								"type": "DatasetReference"
-							},
-							"name": "NoviWellCSV"
-						}
-					],
-					"sinks": [
-						{
-							"dataset": {
-								"referenceName": "Novi_Well_Table",
-								"type": "DatasetReference"
-							},
-							"name": "NoviWellTempSQL"
-						}
-					],
-					"transformations": [],
-					"scriptLines": [
-						"source(output(",
-						"          Row as string,",
-						"          API as string,",
-						"          {Well Name} as string,",
-						"          {Current Operator} as string,",
-						"          {Original Operator} as string,",
-						"          Basin as string,",
-						"          Subbasin as string,",
-						"          State as string,",
-						"          County as string,",
-						"          Formation as string,",
-						"          Field as string,",
-						"          {Well type} as string,",
-						"          {Lateral Length} as string,",
-						"          {First Completion Proppant Mass} as string,",
-						"          {Frac jobs} as string,",
-						"          {Spud Date} as string,",
-						"          {Drilling Completion Date} as string,",
-						"          {First Production Date} as string,",
-						"          {Plugged Date} as string,",
-						"          TVD as string,",
-						"          MD as string,",
-						"          {Well Latitude} as string,",
-						"          {Well Longitude} as string",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     inferDriftedColumnTypes: true,",
-						"     ignoreNoFilesFound: false,",
-						"     rowUrlColumn: 'FileName',",
-						"     wildcardPaths:['novi_wells*']) ~> NoviWellCSV",
-						"NoviWellCSV sink(allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     input(",
-						"          Row as integer,",
-						"          API as long,",
-						"          {Well Name} as string,",
-						"          {Current Operator} as string,",
-						"          {Original Operator} as string,",
-						"          Basin as string,",
-						"          Subbasin as string,",
-						"          State as string,",
-						"          County as string,",
-						"          Formation as string,",
-						"          Field as string,",
-						"          {Well type} as string,",
-						"          {Lateral Length} as integer,",
-						"          {First Completion Proppant Mass} as integer,",
-						"          {Frac jobs} as integer,",
-						"          {Spud Date} as date,",
-						"          {Drilling Completion Date} as date,",
-						"          {First Production Date} as date,",
-						"          {Plugged Date} as date,",
-						"          TVD as integer,",
-						"          MD as integer,",
-						"          {Well Latitude} as float,",
-						"          {Well Longitude} as float,",
-						"          {Column 23} as string",
-						"     ),",
-						"     deletable:false,",
-						"     insertable:true,",
-						"     updateable:false,",
-						"     upsertable:false,",
-						"     format: 'table',",
-						"     skipDuplicateMapInputs: true,",
-						"     skipDuplicateMapOutputs: true,",
-						"     errorHandlingOption: 'stopOnFirstError') ~> NoviWellTempSQL"
-					]
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/NoviWellCSV')]",
-				"[concat(variables('factoryId'), '/datasets/Novi_Well_Table')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
+			"name": "[concat(parameters('factoryName'), '/Novi Prod Pipeline')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"description": "moves novi prod csvs to sql",
 				"activities": [
 					{
-						"name": "dataflow1",
-						"type": "ExecuteDataFlow",
+						"name": "Novi Prod CSV to SQL",
+						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
 							"timeout": "0.12:00:00",
@@ -6810,22 +6621,218 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"dataflow": {
-								"referenceName": "dataflow1",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"NoviWellCSV": {},
-									"NoviWellTempSQL": {}
+							"source": {
+								"type": "DelimitedTextSource",
+								"additionalColumns": [
+									{
+										"name": "FileName",
+										"value": "$$FILEPATH"
+									}
+								],
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"wildcardFileName": "novi_production*.csv",
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
 								}
 							},
-							"staging": {},
-							"compute": {
-								"coreCount": 8,
-								"computeType": "General"
+							"sink": {
+								"type": "AzureSqlSink",
+								"writeBehavior": "upsert",
+								"upsertSettings": {
+									"useTempDB": true,
+									"keys": [
+										"API",
+										"Date"
+									]
+								},
+								"sqlWriterUseTableLock": false,
+								"disableMetricsCollection": false
 							},
-							"traceLevel": "Coarse"
-						}
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "Row",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Row",
+											"type": "Int16",
+											"physicalType": "smallint"
+										}
+									},
+									{
+										"source": {
+											"name": "API",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "API",
+											"type": "Int64",
+											"physicalType": "bigint"
+										}
+									},
+									{
+										"source": {
+											"name": "Well Name",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Well Name",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Date",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Date",
+											"type": "DateTime",
+											"physicalType": "date"
+										}
+									},
+									{
+										"source": {
+											"name": "Months on Production",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Months on Production",
+											"type": "Int16",
+											"physicalType": "smallint"
+										}
+									},
+									{
+										"source": {
+											"name": "IsForecast",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "IsForecast",
+											"type": "Boolean",
+											"physicalType": "bit"
+										}
+									},
+									{
+										"source": {
+											"name": "Oil per day",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Oil per day",
+											"type": "Single",
+											"physicalType": "real"
+										}
+									},
+									{
+										"source": {
+											"name": "Gas per day",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Gas per day",
+											"type": "Single",
+											"physicalType": "real"
+										}
+									},
+									{
+										"source": {
+											"name": "Oil per month",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Oil per month",
+											"type": "Single",
+											"physicalType": "real"
+										}
+									},
+									{
+										"source": {
+											"name": "Gas per month",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Gas per month",
+											"type": "Single",
+											"physicalType": "real"
+										}
+									},
+									{
+										"source": {
+											"name": "Cumulative Oil",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Cumulative Oil",
+											"type": "Single",
+											"physicalType": "real"
+										}
+									},
+									{
+										"source": {
+											"name": "Cumulative Gas",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Cumulative Gas",
+											"type": "Single",
+											"physicalType": "real"
+										}
+									},
+									{
+										"source": {
+											"name": "FileName",
+											"type": "String"
+										},
+										"sink": {
+											"name": "FileName",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "Novi_Prod_CSV",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "whm_novi_prod_temp_table",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
 					}
 				],
 				"policy": {
@@ -6835,7 +6842,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/dataflows/dataflow1')]"
+				"[concat(variables('factoryId'), '/datasets/Novi_Prod_CSV')]",
+				"[concat(variables('factoryId'), '/datasets/whm_novi_prod_temp_table')]"
 			]
 		}
 	]

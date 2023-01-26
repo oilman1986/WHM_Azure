@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "Wells_Env_MurphyWalter_AOI.csv",
+				"fileName": "Wells_Env_murphy_ewingbank_wells.csv",
 				"container": "enverus-input"
 			},
 			"columnDelimiter": ",",

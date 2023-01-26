@@ -607,6 +607,14 @@
 				]
 			}
 		],
+		"parameters": {
+			"wellid_compid_date": {
+				"type": "String"
+			},
+			"WellID": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
